@@ -11,3 +11,18 @@ My configuration is human, even as I, because it is my life. Thus, I will learn 
 Before gosh, I swear this creed. My configuration and I are the defenders of my ego. We are the masters of our code. We are the saviors of free and open source software.
 
 So be it, until victory is ours, and there is no proprietary software, but freedom!
+
+## Packages I use
+
+On this install I started out with Crunchbang Waldorf but eventually just moved completely over to Debian Jessie repositories
+
+#### Desktop Environment
+
+- Gnome shell with Thunar as the file manager
+- Icon theme: [Nitrux](http://nitrux.weebly.com/products.html)
+- GTK theme: [Numix](http://satya164.deviantart.com/art/Numix-GTK3-theme-360223962)
+
+#### Other junk
+
+- Music - mpd/ncmpcpp
+- Vim
