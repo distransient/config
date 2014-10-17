@@ -1,5 +1,5 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Michael's personal Vimrc, mostly forked from
+" Kel's personal Vimrc, mostly forked from
 " http://github.com/amix/vimrc with some snippets from vim wikia
 "
 " Sections:
@@ -106,7 +106,7 @@ syntax enable
 
 " Set color
 colorscheme default
-set background=light
+set background=dark
 
 " Set extra options when running in GUI mode
 if has("gui_running")
