@@ -1,8 +1,13 @@
-# traditional screen Ctrl+a binding
+# Traditional screen Ctrl+a binding
 unbind C-b
 set -g prefix C-a
 bind C-a send-prefix
 
-# match bottom bar with color layout
+# Match bottom bar with color layout
 set -g status-bg black
 set -g status-fg white
+
+# Enable mouse support
+set-option -g mouse-select-pane on
+set-option -g mouse-select-window on
+set-window-option -g mode-mouse on
