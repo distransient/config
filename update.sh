@@ -7,15 +7,15 @@ $REPO/clean.sh
 
 # Copy config files to homedir
 echo "# Warning! This is a generated file!" > $HOME/.zshrc
-echo "# It is overwritten by its parent at $REPO.\n" >> $HOME/.zshrc
+echo "# It is overwritten by its parent at $REPO\n" >> $HOME/.zshrc
 cat $REPO/zshrc >> $HOME/.zshrc
 
 echo "# Warning! This is a generated file!" > $HOME/.tmux.conf
-echo "# It is overwritten by its parent at $REPO.\n" >> $HOME/.tmux.conf
+echo "# It is overwritten by its parent at $REPO\n" >> $HOME/.tmux.conf
 cat $REPO/tmuxrc >> $HOME/.tmux.conf
 
 echo "\" Warning! This is a generated file!" > $HOME/.vimrc
-echo "\" It is overwritten by its parent at $REPO.\n" >> $HOME/.vimrc
+echo "\" It is overwritten by its parent at $REPO\n" >> $HOME/.vimrc
 cat $REPO/vimrc >> $HOME/.vimrc
 
 # Append repo-specifics to zshrc
