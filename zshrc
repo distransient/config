@@ -12,3 +12,5 @@ MAILCHECK=0 # Disable mail checking
 # oh-my-zsh! settings
 plugins=(git) # oh-my-zsh plugins
 ZSH_THEME="robbyrussell" # oh-my-zsh theme
+
+s() { find -exec grep -n "$*" {} + 2> /dev/null }
