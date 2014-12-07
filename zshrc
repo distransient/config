@@ -4,6 +4,7 @@
 # → Oh-my-zsh!-Specific
 # → Functions and Aliases
 # → Updating
+# → Attaching to Tmux 
 
 # ¶ Zsh/General Shell
 autoload -U compinit && compinit # Ultra basic tab completion
@@ -29,3 +30,9 @@ ci() { git add -A && git commit -am "$*" } # commit all changes in repo
 
 # ¶ Updating
 cd $(dirname $0) && git pull &> /dev/null && cd $HOME
+
+# ¶ Attaching to Tmux
+if [ -z "$TMUX" ]; then 
+  ID="$(tmux ls -F '#{session_id}' | head -n 1 | cut -c 2-)"
+  if [ -z $ID ]; then tmux attach -t $ID; else tmux; fi
+fi
