@@ -1,9 +1,26 @@
-# about
-This is where I keep my configs for safe keeping. I don't claim a license to anything in this repo, I guess you could say it's in the public domain.
+# Installing
 
-`bashrc` belongs at `~/.bashrc`. `vimrc` can go to `/etc/vimrc` or `/etc/vim/vimrc` for global use (depending on distro), and to `~/.vimrc` for local use.
+```
+git clone https://github.com/mkgh/config && cd config && ./install
+```
 
-## theming
-Because I know I'll forget...
+# Non-dotfile Preferences
 
-My favorite gtk themes are [Numix](http://satya164.deviantart.com/art/Numix-GTK3-theme-360223962) and [Faience](http://tiheum.deviantart.com/art/GTK3-Gnome-Shell-Faience-255097456). My favorite icon themes are [Nitrux](http://nitrux.weebly.com/products.html) and [Faenza](http://tiheum.deviantart.com/art/Faenza-Icons-173323228). My favorite cursor theme is [Phoeton](http://gnome-look.org/content/show.php/?content=142528). I have yet to understand why all my favorite themes have strange names.
+System Font (high ppi displays):
+- [Chivo](http://www.google.com/fonts/specimen/Chivo)
+- [Bitstream Vera](http://en.wikipedia.org/wiki/Bitstream_Vera)
+- [Open Sans](http://www.google.com/fonts/specimen/Open+Sans)
+- [Droid Sans](http://www.google.com/fonts/specimen/Droid+Sans)
+- [Archivo Black](http://www.google.com/fonts/specimen/Archivo+Black)
+
+Terminal Font:
+- For high ppi displays: [Anonymous Pro](http://www.marksimonson.com/fonts/view/anonymous-pro)
+- For low ppi displays: [Terminus](http://terminus-font.sourceforge.net/)
+
+Combined GTK/Icon Themes:
+- [Numix](https://numixproject.org/)
+- [Faience](http://tiheum.deviantart.com/art/GTK3-Gnome-Shell-Faience-255097456)
+
+Icon Themes:
+- [Nitrux](http://gnome-look.org/content/show.php/Nitrux?content=154496)
+- [Faenza](http://gnome-look.org/content/show.php/Faenza?content=128143)
