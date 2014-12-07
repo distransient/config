@@ -34,5 +34,5 @@ cd $(dirname $0) && git pull &> /dev/null && cd $HOME
 # ¶ Attaching to Tmux
 if [ -z "$TMUX" ]; then 
   ID="$(tmux ls -F '#{session_id}' | head -n 1 | cut -c 2-)"
-  if [ -z $ID ]; then tmux attach -t $ID; else tmux; fi
+  if [ -n $ID ]; then tmux attach -t $ID; else tmux; fi
 fi
