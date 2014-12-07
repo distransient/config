@@ -1,269 +1,121 @@
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Kel's personal Vimrc, mostly forked from
-" http://github.com/amix/vimrc with some snippets from vim wikia
-"
+" Kel's personal Vimrc, mostly forked from http://github.com/amix/vimrc 
+" with some snippets from vim wikia and love from the vim manuals
+
 " Sections:
-"   -> General
-"   -> VIM user interface
-"   -> Colors and Fonts
-"   -> Files and backups
-"   -> Text, tab and indent related
-"   -> Moving around, tabs and buffers
-"   -> Status line
-"   -> Editing mappings
-"   -> vimgrep searching and cope displaying
-"   -> Spell checking
-"   -> Misc
-"   -> Helper functions
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" → General
+" → Indentation
+" → Shortcuts
+" → Interface
+" → Behavior
+" → Helper functions
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => General
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Sets how many lines of history Vim has to remember
-set history=1500
+" recategorize me!!!
+let mapleader = "," " Enable <leader> as said key
+let g:mapleader = "," " make <leader> said key inside functions
 
-" Enable filetype plugins
-filetype plugin on
-filetype indent on
+" ¶ General
+set encoding=utf8 " Set the standard encoding
+set ffs=unix,dos,mac " Use Unix <EOL>s
+set autoread " Set to auto read when a file is changed from the outside
+set viminfo^=% " Remember info about open buffers on close
+set nobackup " don't make permanent backups when overwriting files
+set nowb " don't make temporary backups before overwriting files 
+set noswapfile " don't make backup files for active vim buffers
+set history=1500 " Sets how many lines of history Vim has to remember
+set mouse=a " Enable mouse for all modes
+filetype plugin on " Enable filetype plugin
+filetype indent on " Enable autoindent plugin
 
-" Set to auto read when a file is changed from the outside
-set autoread
+" ¶ Indentation
+set expandtab " Use spaces as tabs
+set shiftwidth=2 " Number of spaces for autoindent
+set tabstop=2 " Number of spaces <Tab> accounts for
+set ai " Copy indent from current line when starting a new one
+set si " Increase indent level in some cases
 
-" With a map leader it's possible to do extra key combinations
-" like <leader>w saves the current file
-let mapleader = ","
-let g:mapleader = ","
-
-" Fast saving
-nmap <leader>w :w!<cr>
-
-" Activate mouse usage for Normal, Visual, Insert, and Command-Line mode
-set mouse=a
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Vim user interface
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Set 7 lines to the cursor - when moving vertically using j/k
-set so=7
-
-" Turn on the WiLd menu
-set wildmenu
-
-" Ignore compiled files
-set wildignore=*.o,*~,*.pyc
-
-" Always show current position
-set ruler
-
-" Show line numbers
-set number
-
-" Height of the command bar
-set cmdheight=1
-
-" A buffer becomes hidden when it is abandoned
-set hid
-
-" Configure backspace so it acts as it should act
-set backspace=eol,start,indent
-set whichwrap+=<,>,h,l
-
-" Ignore case when searching
-" set ignorecase
-
-" When searching try to be smart about cases
-set smartcase
-
-" Highlight search results
-set hlsearch
-
-" Makes search act like search in modern browsers
-set incsearch
-
-" Don't redraw while executing macros
-set lazyredraw
-
-" For regular expressions turn magic on
-set magic
-
-" Show matchingbrackets when text indicator is over them
-set showmatch
-" How many tenths of a second to blink when matching brackets
-set mat=2
-
-" No annoying sound on errors
-set noerrorbells
-set novisualbell
-"set t_vb
-set tm=500
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Colors and Fonts
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Enable syntax highlighting
-syntax enable
-
-" Set color
-colorscheme default
-set background=dark
-
-" Set extra options when running in GUI mode
-if has("gui_running")
-  set guioptions-=T
-  set guioptions+=e
-  set t_Co=256
-  set guitablabel=%M\ %t
-endif
-
-" Set utf8 as standard encoding and en_US as the standard language
-set encoding=utf8
-
-" Use Unix as the standard file type
-set ffs=unix,dos,mac
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Files, backups, and undo
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Turn backup off, since most stuff is in SVN, git, etc. anyway...
-set nobackup
-set nowb
-set noswapfile
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Text, tab, and indent related
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Use spaces instead of tabs
-set expandtab
-
-" Delete shiftwidths instead of single spaces
-" I need those spaces for npm reasons
-" set smarttab
-
-" 1 tab == 2 space master race (I don't need your 4 space/8 space tab code!)
-set shiftwidth=2
-set tabstop=2
-
-" Linebreak on 80 characters
-" disabled, I like to have control manually over this
-" set lbr
-" set tw=80
-
-set ai "Auto indent
-set si "Smart indent
-set wrap "Wrap lines
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Visual mode related
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Visual mode pressing * or # searches for the current selection
-" Super useful! From an idea by Michael Naumann
-vnoremap <silent> * :call VisualSelection('f')<CR>
-vnoremap <silent> # :call VisualSelection('b')<CR>
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Moving around, tabs, windows, and buffers
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" allow use of c and x for copy and cut respectively
-vnoremap <C-X> "+x
-vnoremap <C-C> "+y
-map <C-V> "+gP
-cmap <C-V> <C-R>+
-exe 'inoremap <script> <C-V>' paste#paste_cmd['i']
-exe 'vnoremap <script> <C-V>' paste#paste_cmd['v']
-noremap <C-Q> <C-V>
-
-" Treat long lines as break lines (useful when moving around in them)
-map j gj
-map k gk
-
-" Allow wrap on certain keys
-set whichwrap=b,s,<,>,[,]
-
-" Map the spacebar to search and ctrl-space to backwards search
-map <space> /
-map <c-space> ?
-
-" Disable highlight when <leader><cr> is pressed
-map <silent> <leader><cr> :noh<cr>
-
-" Smart way to move between windows
+" ¶ Shortcuts
+" Saving
+nmap <C-s> :w<CR>
+" Copy/cut/paste, respectively
+vnoremap <C-c> "+y "
+vnoremap <C-x> "+x
+map <C-v> "+gP
+" Moving around windows
 map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
+" Moving around tabs
+map <C-n> <C-PageDown>
+map <C-p> <C-PageUp>
+nnoremap <C-t> :tabedit<Space>
+inoremap <C-t> <Esc>:tabedit<Space>
+nnoremap <C-w> :q<CR>
+inoremap <C-w> <Esc>:q<CR>
 
-" Close the current buffer
-map <leader>bd :Bclose<cr>
+" ¶ Interface
+syntax enable " Enable syntax highlighting
+colorscheme default " Make the editor colorful
+set background=dark " Change this based on terminal emulator colorscheme
+set wrap " Visually wrap lines that are wider than the view
+set so=7 " Lines to the cursor when moving window vertically
+set ruler " Always show current position
+set stal=2 " Always show tab page labels
+set number " Show line numbers
+set cmdheight=1 " Height of the command bar
+set hid " A buffer becomes hidden when it is abandoned
+set hlsearch " Highlight search results
+set lazyredraw " Don't redraw while executing macros
+set showmatch " Show matching brackets when cursor is over them
+set mat=2 " How many tenths of a second to blink when matching brackets
+set noerrorbells " No annoying sound on errors
+set novisualbell " No annoying flashing on errors
+set tm=500 " I have no idea what this does
+set laststatus=2 " Always show the status line
+set statusline="%<%f%8* %r%{&bomb?'!':''} %*%=%9*%m%* 0x%02B %l:%c%V %P/%LL"
+set title " Set window title to titlestring 
 
-" Close all the buffers
-map <leader>ba :1,1000 bd!<cr>
+" ¶ Behavior
+set wildmenu " Nicer tab completion
+set wildignore=*.o,*~,*.pyc " Ignore compiled files in tab completion
+set backspace=eol,start,indent " Normalize backspace behavior
+set whichwrap=b,s,<,>,[,] " Allow wrap on certain keys
+" Treat wrapped lines like newlines
+map j gj
+map k gk
+map <Down> gj
+map <Up> gk
+set smartcase " Be case sensitive if uppercase chars are used in search
+set incsearch " Makes search act like search in modern browsers
+set magic " Make regexes portable/normalized
+set switchbuf=useopen,usetab,newtab " Switch to buf if active when opening
 
-" Useful mappings for managing tabs
+" Visual mode pressing * or # searches for the current selection
+vnoremap <Silent> * :call VisualSelection('f')<CR>
+vnoremap <Silent> # :call VisualSelection('b')<CR>
+cmap <C-v> <C-r>+
+exe 'inoremap <Script> <C-v>' paste#paste_cmd['i']
+exe 'vnoremap <Script> <C-v>' paste#paste_cmd['v']
+noremap <C-q> <C-v>
 map <leader>tn :tabnew<cr>
 map <leader>to :tabonly<cr>
 map <leader>tc :tabclose<cr>
 map <leader>tm :tabmove
-
 " Opens a new tab with the current buffer's path
 " Super useful when editing files in the same directory
-" map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
-
+map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 " Switch CWD to the directory of the open buffer
-" map <leader>cd :cd %:p:h<cr>:pwd<cr>
+map <leader>cd :cd %:p:h<cr>:pwd<cr>
 
-" Specify the behavior when switching between buffers
-try
-  set switchbuf=useopen,usetab,newtab
-  set stal=2
-catch
-endtry
 
-" Return to last edit position when opening files 
-autocmd BufReadPost *
-  \ if line("'\"") > 0 && line("'\"") <= line("$") |
-  \   exe "normal! g`\"" |
-  \ endif
-
-" Remember info about open buffers on close
-set viminfo^=%
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Status line
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Always show the status line
-set laststatus=2
-
-" Format the status line
-let s  = ""
-let s .= "%<"                                 | " truncate at the start
-let s .= "%f%8* "                             | " file name
-let s .= "%r"                                 | " readonly flag
-let s .= '%{&bomb?"!":""} '                   | " byte-order mark flag
-let s .= "%*%="                               | " right-justify after here
-let s .= "%9*%m%* "                           | " modified flag
-let s .= "0x%02B "                            | " hex value of current byte
-let s .= "%l"                                 | " current line
-let s .= ":%c%V"                              | " column number, virtual column (if different)
-let s .= " %P"                                | " percentage
-let s .= "/%LL"                               | " number of lines
-set statusline=%!s
-
-" Set the title of the window
-set title
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Editing mappings
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" ¶ Editing mappings
 " Remap Vim 0 to first non-blank character
 map 0 ^
-
 " Move a line of text using ALT+[jk]
 nmap <M-j> mz:m+<cr>`z
 nmap <M-k> mz:m-2<cr>`z
 vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
 vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
-
 " Delete trailing white space on save
 func! DeleteTrailingWS()
   exe "normal mz"
@@ -274,66 +126,8 @@ autocmd BufWrite *.py :call DeleteTrailingWS()
 autocmd BufWrite *.coffee :call DeleteTrailingWS()
 autocmd BufWrite *.js :call DeleteTrailingWS()
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => vimgrep searching and cope displaying
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" When you press gv you vimgrep after the selected text
-vnoremap <silent> gv :call VisualSelection('gv')<CR>
 
-" Open vimgrep and put the cursor in the right position
-map <leader>g :vimgrep // **/*.<left><left><left><left><left><left><left>
-
-" Vimgreps in the current file
-map <leader><space> :vimgrep // <C-R>%<C-A><right><right><right><right><right><right><right><right><right>
-
-" When you press <leader>r you can search and replace the selected text
-vnoremap <silent> <leader>r :call VisualSelection('replace')<CR>
-
-" When you search with vimgrep, display your results in cope by doing
-"   <leader>cc
-"
-" To go to the next search result do:
-"   <leader>n
-"
-" To go to the previous search result do:
-"   <leader>p
-map <leader>cc :botright cope<cr>
-map <leader>co ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
-map <leader>n :cn<cr>
-map <leader>p :cp<cr>
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Spell checking
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Pressing ,ss will toggle and untoggle spell checking
-map <leader>ss :setlocal spell!<cr>
-
-" Shortucts using <leader>
-map <leader>sn ]s
-map <leader>sp [s
-map <leader>sa zg
-map <leader>s? z=
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Misc
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Remove the Windows ^M - when the encodings gets messed up
-noremap <Leader>m mHmt:%s/<C-V><cr>//ge<cr>'tzt'm
-
-" Quickly open a buffer for scribble
-map <leader>q :e ~/buffer<cr>
-
-" Toggle paste mode on and off
-map <leader>pp :setlocal paste!<cr>
-
-" Turn off insert mode when left idle for a while
-au CursorHoldI * stopinsert
-au InsertEnter * let updaterestore=&updatetime | set updatetime=100000
-au InsertLeave * let &updatetime=updaterestore
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Helper functions
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" ¶ Helper functions
 function! CmdLine(str)
   exe "menu Foo.Bar :" . a:str
   emenu Foo.Bar
