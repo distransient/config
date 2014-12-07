@@ -12,7 +12,7 @@ fi
 
 touch $HOME/.zshrc && echo "source $(pwd)/zshrc" >> $HOME/.zshrc
 touch $HOME/.vimrc && echo "source $(pwd)/vimrc" >> $HOME/.vimrc
-touch $HOME/.tmux.conf && echo "source $(pwd)/tmuxrc" >> $HOME/.tmux.conf
+touch $HOME/.tmux.conf && echo "source-file $(pwd)/tmuxrc" >> $HOME/.tmux.conf
 
 echo ""
 echo "Configs are now sourced by ~/.zshrc, ~/.vimrc, and ~/.tmux.conf"

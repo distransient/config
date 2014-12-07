@@ -1,17 +1,12 @@
 " Kel's personal Vimrc, mostly forked from http://github.com/amix/vimrc 
-" with some snippets from vim wikia and love from the vim manuals
+" with some snippets from vim wikia and a lot of love from the vim manuals
 
 " Sections:
 " → General
 " → Indentation
-" → Shortcuts
 " → Interface
 " → Behavior
-" → Helper functions
-
-" recategorize me!!!
-let mapleader = "," " Enable <leader> as said key
-let g:mapleader = "," " make <leader> said key inside functions
+" → Shortcuts
 
 " ¶ General
 set encoding=utf8 " Set the standard encoding
@@ -32,26 +27,6 @@ set shiftwidth=2 " Number of spaces for autoindent
 set tabstop=2 " Number of spaces <Tab> accounts for
 set ai " Copy indent from current line when starting a new one
 set si " Increase indent level in some cases
-
-" ¶ Shortcuts
-" Saving
-nmap <C-s> :w<CR>
-" Copy/cut/paste, respectively
-vnoremap <C-c> "+y "
-vnoremap <C-x> "+x
-map <C-v> "+gP
-" Moving around windows
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-h> <C-W>h
-map <C-l> <C-W>l
-" Moving around tabs
-map <C-n> <C-PageDown>
-map <C-p> <C-PageUp>
-nnoremap <C-t> :tabedit<Space>
-inoremap <C-t> <Esc>:tabedit<Space>
-nnoremap <C-w> :q<CR>
-inoremap <C-w> <Esc>:q<CR>
 
 " ¶ Interface
 syntax enable " Enable syntax highlighting
@@ -76,8 +51,12 @@ set statusline="%<%f%8* %r%{&bomb?'!':''} %*%=%9*%m%* 0x%02B %l:%c%V %P/%LL"
 set title " Set window title to titlestring 
 
 " ¶ Behavior
+set magic " Make regexes portable/normalized
+set smartcase " Be case sensitive if uppercase chars are used in search
+set incsearch " Makes search act like search in modern browsers
 set wildmenu " Nicer tab completion
 set wildignore=*.o,*~,*.pyc " Ignore compiled files in tab completion
+set switchbuf=useopen,usetab,newtab " Switch to buf if active when opening
 set backspace=eol,start,indent " Normalize backspace behavior
 set whichwrap=b,s,<,>,[,] " Allow wrap on certain keys
 " Treat wrapped lines like newlines
@@ -85,101 +64,30 @@ map j gj
 map k gk
 map <Down> gj
 map <Up> gk
-set smartcase " Be case sensitive if uppercase chars are used in search
-set incsearch " Makes search act like search in modern browsers
-set magic " Make regexes portable/normalized
-set switchbuf=useopen,usetab,newtab " Switch to buf if active when opening
 
-" Visual mode pressing * or # searches for the current selection
-vnoremap <Silent> * :call VisualSelection('f')<CR>
-vnoremap <Silent> # :call VisualSelection('b')<CR>
-cmap <C-v> <C-r>+
-exe 'inoremap <Script> <C-v>' paste#paste_cmd['i']
-exe 'vnoremap <Script> <C-v>' paste#paste_cmd['v']
-noremap <C-q> <C-v>
-map <leader>tn :tabnew<cr>
-map <leader>to :tabonly<cr>
-map <leader>tc :tabclose<cr>
-map <leader>tm :tabmove
-" Opens a new tab with the current buffer's path
-" Super useful when editing files in the same directory
-map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
+" ¶ Shortcuts
+" Saving
+noremap <C-s> :w<CR>
+" Copy/cut/paste, respectively
+vnoremap <C-c> "+y "
+vnoremap <C-x> "+x
+noremap <C-v> "+gP
+" Moving around windows
+noremap <C-j> <C-W>j
+noremap <C-k> <C-W>k
+noremap <C-h> <C-W>h
+noremap <C-l> <C-W>l
+" Moving around tabs
+noremap <C-n> <C-PageDown>
+noremap <C-p> <C-PageUp>
+" Opening new tabs and windows
+noremap <C-t> <Esc>:tabedit<CR>
+noremap <C-n> <C-w>n 
+" Open a file
+noremap <C-o> <Esc>:e<Space><Tab>
+" Close current window or tab
+noremap <C-q> <Esc>:q<CR>
+" Open a new tab with the current buffer's path
+noremap <C-e> <Esc>:tabedit <C-r>=expand("%:p:h")<CR>/
 " Switch CWD to the directory of the open buffer
-map <leader>cd :cd %:p:h<cr>:pwd<cr>
-
-
-" ¶ Editing mappings
-" Remap Vim 0 to first non-blank character
-map 0 ^
-" Move a line of text using ALT+[jk]
-nmap <M-j> mz:m+<cr>`z
-nmap <M-k> mz:m-2<cr>`z
-vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
-vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
-" Delete trailing white space on save
-func! DeleteTrailingWS()
-  exe "normal mz"
-  %s/\s\+$//ge
-  exe "normal `z"
-endfunc
-autocmd BufWrite *.py :call DeleteTrailingWS()
-autocmd BufWrite *.coffee :call DeleteTrailingWS()
-autocmd BufWrite *.js :call DeleteTrailingWS()
-
-
-" ¶ Helper functions
-function! CmdLine(str)
-  exe "menu Foo.Bar :" . a:str
-  emenu Foo.Bar
-  unmenu Foo
-endfunction
-
-function! VisualSelection(direction) range
-  let l:saved_reg = @"
-  execute "normal! vgvy"
-  
-  let l:pattern = escape(@", '\\/.*$^~[]')
-  let l:pattern = substitute(l:pattern, "\n$", "", "")
-
-  if a:direction == 'b'
-    execute "normal ?" . l:pattern . "^M"
-  elseif a:direction == 'gv'
-    call CmdLine("vimgrep " . '/'. l:pattern . '/' . ' **/*.')
-  elseif a:direction == 'replace'
-    call CmdLine("%s" . '/'. l:pattern . '/')
-  elseif a:direction == 'f'
-    execute "normal /" . l:pattern . "^M"
-  endif
-
-  let @/ = l:pattern
-  let @" = l:saved_reg
-endfunction
-
-" Returns true if paste mode is enabled
-function! HasPaste()
-  if &paste
-    return 'PASTE MODE  '
-  en
-  return ''
-endfunction
-
-" Don't close window, when deleting a buffer
-command! Bclose call <SID>BufcloseCloseIt()
-function! <SID>BufcloseCloseIt()
-  let l:currentBufNum = bufnr("%")
-  let l:alternateBufNum = bufnr("#")
-  
-  if buflisted(l:alternateBufNum)
-    buffer #
-  else
-    bnext
-  endif
-
-  if bufnr("%") == l:currentBufNum
-    new
-  endif
-
-  if buflisted(l:currentBufNum)
-    execute("bdelete! ".l.currentBufNum)
-  endif
-endfunction
+noremap <C-g> :cd %:p:h<cr>:pwd<cr>
