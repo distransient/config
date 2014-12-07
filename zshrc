@@ -25,7 +25,7 @@ b() { cd $(git rev-parse --show-cdup) } # Cd to root of current repo
 alias f="find -name" # Search for file with name foo
 alias vim="vim -p" # Allows multiple arguments to be opened as tabs
 alias v="vim -p" # Lazy shorthand
-alias ci="git add -A && git commit -am" # commit all changes in repo
+ci() { git add -A && git commit -am "$*" } # commit all changes in repo
 
 # ¶ Updating
 cd $(dirname $0) && git pull &> /dev/null && cd $HOME
