@@ -10,19 +10,16 @@ if [ -e oh-my-zsh/.git ] # If oh-my-zsh's repo's already been cloned
     git clone https://github.com/robbyrussell/oh-my-zsh.git
 fi
 
-# Source zsh and vim config files
 touch $HOME/.zshrc && echo "source $(pwd)/zshrc" >> $HOME/.zshrc
 touch $HOME/.vimrc && echo "source $(pwd)/vimrc" >> $HOME/.vimrc
+touch $HOME/.tmux.conf && echo "source $(pwd)/tmuxrc" >> $HOME/.tmux.conf
 
-# Copy our tmux config file over since idk how to use tmuxrc sourcing
-echo "# WARNING! I'm a generated file!" > $HOME/.tmux.conf
-echo "# I'm overwritten by my parent at $(pwd)" >> $HOME/.tmux.conf
-echo "# Have a nice day!\n" >> $HOME/.tmux.conf
-cat tmuxrc >> $HOME/.tmux.conf
-
-echo "Configs are now copied to your home directory."
-echo "Every time you open a terminal, this repo will be updated"
-echo "and the new configs will be copied over.\n"
-
-echo "If you move this repository, be sure to run install.sh again."
-echo "Have a good day!\n"
+echo ""
+echo "Configs are now sourced by ~/.zshrc, ~/.vimrc, and ~/.tmux.conf"
+echo "  to the files in this directory. Whenever a new shell is opened,"
+echo "  the configs within this directory are updated. However, if you"
+echo "  move this directory, be sure to update your homedir's configs to"
+echo "  point to the new location."
+echo ""
+echo "Have a nice day!"
+echo ""

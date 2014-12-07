@@ -27,9 +27,4 @@ alias vim="vim -p" # Allows multiple arguments to be opened as tabs
 alias v="vim -p" # Lazy shorthand
 
 # ¶ Updating
-cd $(dirname $0) 
-git pull &> /dev/null 
-echo "# WARNING! I'm a generated file!" > $HOME/.tmux.conf
-echo "# I'm overwritten by my parent at $(pwd)" >> $HOME/.tmux.conf
-echo "# Have a nice day!\n" >> $HOME/.tmux.conf
-cd $HOME
+cd $(dirname $0) && git pull &> /dev/null && cd $HOME
