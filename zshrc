@@ -35,10 +35,10 @@ cd $(dirname $0) && git pull &> /dev/null && cd $HOME
 if [ -z "$TMUX" ]; then 
   ID="$(tmux ls -F '#{session_id}' &> /dev/null | head -n 1 | cut -c 2-)"
   if [ -n "$ID" ]; then tmux attach -t $ID; else tmux; fi
+fi
 
-  # If we're in ssh, make the tmux session look different 
-  if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
-    tmux setenv status-bg yellow
-    tmux setenv status-fg black
-  fi
+# If we're in ssh, make the tmux session look different 
+if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
+  tmux set status-bg yellow &> /dev/null
+  tmux set status-fg black &> /dev/null
 fi
