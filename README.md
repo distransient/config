@@ -1,3 +1,7 @@
+# Configuration! Configuration! Configuration!
+
+Kel's Dotfile repo; lean and mean!
+
 # Installing
 
 ```
@@ -24,3 +28,13 @@ Combined GTK/Icon Themes:
 Icon Themes:
 - [Nitrux](http://gnome-look.org/content/show.php/Nitrux?content=154496)
 - [Faenza](http://gnome-look.org/content/show.php/Faenza?content=128143)
+
+# Todo
+
+- I want to remove oh-my-zsh as a dependency. I'll need to find out what functionality I'll migrate over from their source files
+- Possibly make repository only update occaisionally instead of on every startup to speed up startup
+- Source zshrc AFTER repository is updated 
+
+# License
+
+All files in this repo that don't say otherwise are placed in public domain; wherever I'm permitted to do so, I wave any copyright associated with these source files!.
