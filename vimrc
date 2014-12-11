@@ -1,6 +1,5 @@
-" Kel's personal Vimrc, mostly forked from http://github.com/amix/vimrc 
+" Kel's personal Vimrc, mostly forked from github.com/amix/vimrc 
 " with some snippets from vim wikia and a lot of love from the vim manuals
-
 " Sections:
 " → General
 " → Indentation
@@ -82,7 +81,7 @@ noremap <C-n> <C-PageDown>
 noremap <C-p> <C-PageUp>
 " Opening new tabs and windows
 noremap <C-t> <Esc>:tabedit<CR>
-noremap <C-n> <C-w>n 
+noremap <C-b> <C-w>n 
 " Open a file
 noremap <C-o> <Esc>:e<Space><Tab>
 " Close current window or tab
