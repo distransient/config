@@ -8,6 +8,7 @@
 # ¶ Zsh/General Shell
 for file in $(dirname $0)/lib/*.zsh; do source "$file"; done # Load libraries
 autoload -U compinit && compinit # Ultra basic tab completion
+zstyle ':completion:*' list-colors "${(@s.:.)LS_COLORS}" # Tab completion color
 bindkey -v # Vim bindings for shell input
 setopt PROMPT_SUBST # Substitute commands, parameters, arithmetic in prompt
 setopt COMPLETE_IN_WORD # Allow tab completion in the middle of a word
@@ -25,19 +26,18 @@ SAVEHIST=10000 # OVER NINE THOUSAAAAND
 export EDITOR="vim"
 [ -z $BACKGROUND ] && BACKGROUND="dark" # Default background value
 precmd() { 
-  if [ -n "$(git branch &> /dev/null)" ]; then
-    if [ "${git_worktree_is_bare}" = 'false' ] && \
-    [ -n "$(git status --untracked-files='no' --porcelain)" ]; then
-      PROMPT="$fg[yellow] ♆ $reset_color"
+  if [ -n "$(git branch 2> /dev/null)" ]; then
+    if [ -n "$(git status --porcelain)" ]; then
+      PROMPT="%F{yellow} ♆  %f"
     else
-      PROMPT="$fg[green] ♆ $reset_color"
+      PROMPT="%F{green} ♆  %f"
     fi
-  elif [ -n "$(hg root &> /dev/null)" ]; then
+  elif [ -n "$(hg root 2> /dev/null)" ]; then
     PROMPT=" ☿  " # todo...
   elif [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
-    PROMPT="$fg[blue] ⇢ $reset_color"
+    PROMPT="%F{blue} ⇢  %f"
   else
-    PROMPT="$fg[green] → $reset_color"
+    PROMPT="%F{green} →  %f"
   fi
 }
 RPROMPT="%~"
