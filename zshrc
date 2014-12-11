@@ -13,6 +13,7 @@ setopt NOBGNICE # Keep background processes at full speed
 setopt NO_BEEP # Never ever beep ever
 LISTMAX=0 # Automatically decide when to page a list of completions
 MAILCHECK=0 # Disable mail checking
+for file in $(dirname $0)/lib/*.zsh; do source "$file"; done # Load libraries
 
 # ¶ Oh-my-zsh!-Specific
 plugins=(git) # oh-my-zsh plugins
