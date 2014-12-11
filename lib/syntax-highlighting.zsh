@@ -29,6 +29,7 @@
 # -------------------------------------------------------------------------------------------------
 # Source: https://github.com/zsh-users/zsh-syntax-highlighting
 
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor root line)
 
 # -------------------------------------------------------------------------------------------------
 # Core highlighting update system
