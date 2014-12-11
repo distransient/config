@@ -17,6 +17,7 @@ MAILCHECK=0 # Disable mail checking
 # ¶ Oh-my-zsh!-Specific
 plugins=(git) # oh-my-zsh plugins
 ZSH_THEME="robbyrussell" # oh-my-zsh theme
+DISABLE_UPDATE_PROMPT=true # don't prompt to update oh-my-zsh
 export ZSH=`dirname $0`/oh-my-zsh # Path to oh-my-zsh install.
 source $ZSH/oh-my-zsh.sh # Run oh-my-zsh scripts
  
