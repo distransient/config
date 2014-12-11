@@ -3,13 +3,6 @@
 
 cd `dirname $0` # Move to the directory of the dotfile repository
 
-if [ -e oh-my-zsh/.git ] # If oh-my-zsh's repo's already been cloned
-  then # Update the contents of it
-    cd oh-my-zsh && git pull &> /dev/null && cd ..
-  else # Install oh-my-zsh
-    git clone https://github.com/robbyrussell/oh-my-zsh.git &> /dev/null
-fi
-
 touch $HOME/.zshrc && echo "source $(pwd)/zshrc" >> $HOME/.zshrc
 touch $HOME/.vimrc && echo "source $(pwd)/vimrc" >> $HOME/.vimrc
 touch $HOME/.tmux.conf && echo "source-file $(pwd)/tmuxrc" >> $HOME/.tmux.conf

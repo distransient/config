@@ -4,18 +4,51 @@
 # → Keybindings
 # → Interface
 
+# ¶ General
+set -g set-titles on # Enable window pane title via terminfo
+set -g set-titles-string "tmux:#I #W" # Window pane title string
+setw -g utf8 on # Expect unicode sequences in all windows
+set -g mouse-utf8 on # Request unicode mouse input on unicode terminals
+set -g status-utf8 on # Treat top-bit-set characters in status string as utf-8
+
+# ¶ Behavior 
+set -g mouse-select-pane on # Allow mouse to change pane focus
+set -g mouse-resize-pane on # Allow mouse to drag-resize panes
+setn -g mouse-select-window on # Change window by clicking on status pane
+setw -g mode-mouse copy-mode # Mouse selection when in copy mode
+
+# ¶ Keybindings 
 unbind C-b # Free normal tmux command bind
 set -g prefix C-a # Screen style <C-a> binding
+setw -g mode-keys vi # Use vi keybindings in copy mode
+set -g status-keys vi # Use vi keybindings in status line command prompt
 bind C-a send-prefix # Send prefix to inner window
 
-# Match bottom bar with color layout
-set -g status-bg black
-set -g status-fg white
-
-# Enable mouse support
-set-option -g mouse-select-pane on
-set-option -g mouse-select-window on
-set-window-option -g mode-mouse on
-
-# Use vim keybindings in copy mode
-setw -g mode-keys vi
+# ¶ Interface 
+# set -g message-fg [color] # status line message color
+# set -g pane-border-bg [color]
+# set -g pane-border-fg [color]
+# set -g pane-active-border-bg [color]  
+# set -g pane-active-border-fg [color] 
+#set -g status-attr dim # Style status bar
+#set -g status-bg black
+#set -g status-fg white
+#set -g status-left "#[fg=green] #H #[default]" # Text on left side of status bar
+#set -g status-left-length 10 # Max left-side length
+#set -g status-right "#[fg=blue,bright]Up#(uptime | cut -f 4-5 -d ' ' | cut -f 1 -d ',') #[default]:: #[fg=cyan]#(cut -d " " -f 1-4 /proc/loadavg) " # Text on right side of status bar
+#set -g status-right-length 10 # Max right-side length
+#setw -g monitor-activity on # Highlight windows with activity in status line
+#setw -g window-status-bell-attr italics
+#setw -g window-status-bell-bg red
+#setw -g window-status-bell-fg white
+#setw -g window-status-content-attr italics
+#setw -g window-status-content-bg red
+#setw -g window-status-content-fg white
+#setw -g window-status-activity-attr italics
+#setw -g window-status-activity-bg red
+#setw -g window-status-activity-fg white
+#setw -g window-status-current-bg black
+#setw -g window-status-current-fg white
+#setw -g window-status-current-attr italics
+#setw -g window-status-current-format "#I:#W#F"
+#setw -g window-status-format "#I:#W#F"
