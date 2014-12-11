@@ -27,17 +27,16 @@ export EDITOR="vim"
 [ -z $BACKGROUND ] && BACKGROUND="dark" # Default background value
 precmd() { 
   if [ -n "$(git branch 2> /dev/null)" ]; then
-    if [ -n "$(git status --porcelain)" ]; then
-      PROMPT="%F{yellow} ♆  %f"
-    else
-      PROMPT="%F{green} ♆  %f"
+    if [ -n "$(git status --porcelain)" ] 
+      then PROMPT="%(?:%F{yellow}:%F{red}) ♆  %f"
+      else PROMPT="%(?:%F{green}:%F{red}) ♆  %f"
     fi
   elif [ -n "$(hg root 2> /dev/null)" ]; then
-    PROMPT=" ☿  " # todo...
+    PROMPT="%(?:%F{green}:%F{red}) ☿ %f" # todo...
   elif [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
-    PROMPT="%F{blue} ⇢  %f"
+    PROMPT="%(?:%F{blue}:%F{red}) ⇢  %f"
   else
-    PROMPT="%F{green} →  %f"
+    PROMPT="%(?:%F{green}:%F{red}) → %f"
   fi
 }
 RPROMPT="%~"
