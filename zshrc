@@ -4,7 +4,7 @@
 # → Oh-my-zsh!-Specific
 # → Functions and Aliases
 # → Updating
-# → Attaching to Tmux 
+# → Initialization 
 
 # ¶ Zsh/General Shell
 autoload -U compinit && compinit # Ultra basic tab completion
@@ -33,12 +33,8 @@ ci() { git add -A && git commit -am "$*" } # commit all changes in repo
 # ¶ Updating
 cd $(dirname $0) && git pull &> /dev/null && cd $HOME
 
-# ¶ Attaching to Tmux
-if [ -z "$TMUX" ]; then 
-  ID="$(tmux ls -F '#{session_id}' &> /dev/null | head -n 1 | cut -c 2-)"
-  if [ -n "$ID" ]; then tmux attach -t $ID; else tmux; fi
-fi
-
+# ¶ Initialization
+if [ -z "$TMUX" ]; then tmux a || tmux; fi
 # If we're in ssh, make the tmux session look different 
 if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
   tmux set status-bg yellow &> /dev/null
