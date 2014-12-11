@@ -15,7 +15,7 @@ set -g status-utf8 on # Treat top-bit-set characters in status string as utf-8
 set -g mouse-select-pane on # Allow mouse to change pane focus
 set -g mouse-resize-pane on # Allow mouse to drag-resize panes
 set -g mouse-select-window on # Change window by clicking on status pane
-setw -g mode-mouse copy-mode # Mouse selection when in copy mode
+setw -g mode-mouse on # Mouse active in all modes
 
 # ¶ Keybindings 
 unbind C-b # Free normal tmux command bind
