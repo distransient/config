@@ -34,6 +34,8 @@ Icon Themes:
 - I want to remove oh-my-zsh as a dependency. I'll need to find out what functionality I'll migrate over from their source files
 - Possibly make repository only update occaisionally instead of on every startup to speed up startup
 - Source zshrc AFTER repository is updated 
+- Probably switch back to <leader> for vim keybindings
+- Unify tmux and vim custom keybindings in a sensible fashion
 
 # License
 
