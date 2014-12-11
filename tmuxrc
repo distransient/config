@@ -1,7 +1,12 @@
-# Traditional screen Ctrl+a binding
-unbind C-b
-set -g prefix C-a
-bind C-a send-prefix
+# Kel's TERMINAL !!MULTIPLEXER!! configuration
+# Sections
+# → Behavior
+# → Keybindings
+# → Interface
+
+unbind C-b # Free normal tmux command bind
+set -g prefix C-a # Screen style <C-a> binding
+bind C-a send-prefix # Send prefix to inner window
 
 # Match bottom bar with color layout
 set -g status-bg black
