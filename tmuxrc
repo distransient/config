@@ -1,21 +1,19 @@
 # Kel's TERMINAL !!MULTIPLEXER!! configuration
 # Sections
-# → Behavior
+# → General
 # → Keybindings
 # → Interface
 
 # ¶ General
 set -g set-titles on # Enable window pane title via terminfo
-set -g set-titles-string "tmux:#I #W" # Window pane title string
+set -g set-titles-string "#W" # Window pane title string
 setw -g utf8 on # Expect unicode sequences in all windows
-set -g mouse-utf8 on # Request unicode mouse input on unicode terminals
 set -g status-utf8 on # Treat top-bit-set characters in status string as utf-8
-
-# ¶ Behavior 
+set -g mouse-utf8 on # Request unicode mouse input on unicode terminals
+setw -g mode-mouse on # Mouse active in all modes
 set -g mouse-select-pane on # Allow mouse to change pane focus
 set -g mouse-resize-pane on # Allow mouse to drag-resize panes
 set -g mouse-select-window on # Change window by clicking on status pane
-setw -g mode-mouse on # Mouse active in all modes
 
 # ¶ Keybindings 
 unbind C-b # Free normal tmux command bind
@@ -25,30 +23,24 @@ set -g status-keys vi # Use vi keybindings in status line command prompt
 bind C-a send-prefix # Send prefix to inner window
 
 # ¶ Interface 
-# set -g message-fg [color] # status line message color
-# set -g pane-border-bg [color]
-# set -g pane-border-fg [color]
-# set -g pane-active-border-bg [color]  
-# set -g pane-active-border-fg [color] 
-#set -g status-attr dim # Style status bar
-#set -g status-bg black
-#set -g status-fg white
-#set -g status-left "#[fg=green] #H #[default]" # Text on left side of status bar
-#set -g status-left-length 10 # Max left-side length
-#set -g status-right "#[fg=blue,bright]Up#(uptime | cut -f 4-5 -d ' ' | cut -f 1 -d ',') #[default]:: #[fg=cyan]#(cut -d " " -f 1-4 /proc/loadavg) " # Text on right side of status bar
-#set -g status-right-length 10 # Max right-side length
-#setw -g monitor-activity on # Highlight windows with activity in status line
-#setw -g window-status-bell-attr italics
-#setw -g window-status-bell-bg red
-#setw -g window-status-bell-fg white
-#setw -g window-status-content-attr italics
-#setw -g window-status-content-bg red
-#setw -g window-status-content-fg white
-#setw -g window-status-activity-attr italics
-#setw -g window-status-activity-bg red
-#setw -g window-status-activity-fg white
-#setw -g window-status-current-bg black
-#setw -g window-status-current-fg white
-#setw -g window-status-current-attr italics
-#setw -g window-status-current-format "#I:#W#F"
-#setw -g window-status-format "#I:#W#F"
+set -g status-attr dim # Style status bar
+set -g status-bg yellow # Status bar background
+set -g status-fg black # Status bar text color
+set -g status-left "" # Text on left side of status bar
+set -g status-left-length 0 # Max left-side length
+set -g status-right "#H:#S" # Text on right side of status bar
+set -g status-right-length 60 # Max right-side length
+setw -g monitor-activity on # Highlight windows with activity in status line
+set -g pane-border-bg yellow
+set -g pane-border-fg black
+set -g pane-active-border-bg black  
+set -g pane-active-border-fg magenta
+setw -g window-status-bell-attr italics
+setw -g window-status-bell-bg red
+setw -g window-status-content-attr italics
+setw -g window-status-content-bg white
+setw -g window-status-activity-attr italics
+setw -g window-status-activity-bg white
+setw -g window-status-current-bg magenta
+setw -g window-status-current-format " #I #W "
+setw -g window-status-format " #I #W "
