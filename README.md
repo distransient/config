@@ -31,11 +31,9 @@ Icon Themes:
 
 # Todo
 
-- I want to remove oh-my-zsh as a dependency. I'll need to find out what functionality I'll migrate over from their source files
-- Possibly make repository only update occaisionally instead of on every startup to speed up startup
-- Source zshrc AFTER repository is updated 
-- Probably switch back to <leader> for vim keybindings
-- Unify tmux and vim custom keybindings in a sensible fashion
+- Make dotfiles update only on occaision similar to [this utility from oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh/blob/master/tools/check_for_upgrade.sh)
+- Fresh keybindings that make sense between tmux, zsh, vim
+- Bash fallback config/prompt
 
 # License
 
