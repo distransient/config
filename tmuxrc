@@ -28,7 +28,7 @@ set -g status-bg yellow # Status bar background
 set -g status-fg black # Status bar text color
 set -g status-left "" # Text on left side of status bar
 set -g status-left-length 0 # Max left-side length
-set -g status-right "#H:#S" # Text on right side of status bar
+set -g status-right "#H:#S " # Text on right side of status bar
 set -g status-right-length 60 # Max right-side length
 setw -g monitor-activity on # Highlight windows with activity in status line
 set -g pane-border-bg yellow
