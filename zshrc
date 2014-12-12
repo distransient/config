@@ -23,8 +23,7 @@ HISTFILE=~/.histfile # Location to store shell history
 HISTSIZE=10000 # It... It's... 
 SAVEHIST=10000 # OVER NINE THOUSAAAAND
 #export BROWSER="google-chrome"
-export EDITOR="vim"
-[ -z $BACKGROUND ] && BACKGROUND="dark" # Default background value
+export EDITOR="vim" # Default editor
 precmd() { 
   if [ -n "$(git branch 2> /dev/null)" ]; then
     if [ -n "$(git status --porcelain)" ] 
@@ -39,12 +38,13 @@ precmd() {
     PROMPT="%(?:%F{green}:%F{red}) → %f"
   fi
 }
-RPROMPT="%~"
+RPROMPT="%~" # Current directory right side prompt
  
 # ¶ Functions and Aliases
-alias grep="grep --color=auto" # Colorify printed greps
 s() { find -exec grep -n "$*" {} + 2> /dev/null } # Text search
 b() { cd $(git rev-parse --show-cdup) } # Cd to root of current repo
+ci() { git add -A && git commit -am "$*" } # commit all changes in repo
+alias grep="grep --color=auto" # Colorify printed greps
 alias f="find -name" # Search for file with name foo
 alias ls="ls -GF" # ls with color (tfw no gf)
 alias l="ls -GF" # Lazy shorthand
@@ -56,7 +56,6 @@ alias rm="rm -iv" # Prompt before delete, verbose deletion
 alias tmux="tmux -2u" # Force 256 color/unicode tmux 
 alias vim="vim -p" # Allows multiple arguments to be opened as tabs
 alias v="vim -p" # Lazy shorthand
-ci() { git add -A && git commit -am "$*" } # commit all changes in repo
 # Colored man pages
 man() { env LESS_TERMCAP_mb=$(printf "\e[1;31m") \
     LESS_TERMCAP_md=$(printf "\e[1;31m") LESS_TERMCAP_me=$(printf "\e[0m") \
@@ -64,13 +63,7 @@ man() { env LESS_TERMCAP_mb=$(printf "\e[1;31m") \
     LESS_TERMCAP_ue=$(printf "\e[0m") LESS_TERMCAP_us=$(printf "\e[1;32m") \
     man "$@" }
 
-# ¶ Updating
-cd $(dirname $0) && git pull &> /dev/null && cd $HOME
-
 # ¶ Initialization
+cd $(dirname $0) && git pull 1> /dev/null 
+cd $HOME
 [ -n "$TMUX" ] || tmux a || tmux
-# If we're in ssh, make the tmux session look different 
-if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
-  tmux set status-bg yellow &> /dev/null
-  tmux set status-fg black &> /dev/null
-fi
