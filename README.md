@@ -34,6 +34,7 @@ Icon Themes:
 - Make dotfiles update only on occaision similar to [this utility from oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh/blob/master/tools/check_for_upgrade.sh)
 - Fresh keybindings that make sense between tmux, zsh, vim
 - Bash fallback config/prompt
+- Don't use `precmd()` for zsh PROMPT, make PROMPT one string
 
 # License
 
