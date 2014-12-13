@@ -23,12 +23,12 @@ set -g status-keys vi # Use vi keybindings in status line command prompt
 bind C-a send-prefix # Send prefix to inner window
 
 # ¶ Interface 
-set -g status-style bg=brightyellow,fg=black
+set -g status-style bg=colour11,fg=black
 set -g status-left "" # Move window tabs all the way to the left
 set -g status-right "#H:#S " # Host : Session name
 set -g status-right-length 60 # Give plenty of space for big status-right
-set -g pane-border-style bg=brightyellow,fg=black
-set -g pane-active-border-style bg=brightmagenta,fg=black
+set -g pane-border-style bg=colour11,fg=black
+set -g pane-active-border-style bg=colour13,fg=black
 setw -g monitor-activity on # Highlight windows with activity in status line
 setw -g window-status-bell-attr italics
 setw -g window-status-bell-bg colour9
