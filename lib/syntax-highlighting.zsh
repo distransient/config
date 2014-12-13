@@ -336,26 +336,26 @@ _zsh_highlight_line_highlighter()
 # Define default styles.
 : ${ZSH_HIGHLIGHT_STYLES[default]:=none}
 : ${ZSH_HIGHLIGHT_STYLES[unknown-token]:=fg=red,bold}
-: ${ZSH_HIGHLIGHT_STYLES[reserved-word]:=fg=yellow}
-: ${ZSH_HIGHLIGHT_STYLES[alias]:=fg=green}
-: ${ZSH_HIGHLIGHT_STYLES[builtin]:=fg=green}
-: ${ZSH_HIGHLIGHT_STYLES[function]:=fg=green}
-: ${ZSH_HIGHLIGHT_STYLES[command]:=fg=green}
-: ${ZSH_HIGHLIGHT_STYLES[precommand]:=fg=green,underline}
+: ${ZSH_HIGHLIGHT_STYLES[reserved-word]:=fg=yellow,bold}
+: ${ZSH_HIGHLIGHT_STYLES[alias]:=fg=magenta,bold}
+: ${ZSH_HIGHLIGHT_STYLES[builtin]:=fg=magenta,bold}
+: ${ZSH_HIGHLIGHT_STYLES[function]:=fg=magenta,bold}
+: ${ZSH_HIGHLIGHT_STYLES[command]:=fg=magenta,bold}
+: ${ZSH_HIGHLIGHT_STYLES[precommand]:=fg=magenta,bold,underline}
 : ${ZSH_HIGHLIGHT_STYLES[commandseparator]:=none}
-: ${ZSH_HIGHLIGHT_STYLES[hashed-command]:=fg=green}
+: ${ZSH_HIGHLIGHT_STYLES[hashed-command]:=fg=magenta,bold}
 : ${ZSH_HIGHLIGHT_STYLES[path]:=underline}
 : ${ZSH_HIGHLIGHT_STYLES[path_prefix]:=underline}
-: ${ZSH_HIGHLIGHT_STYLES[path_approx]:=fg=yellow,underline}
-: ${ZSH_HIGHLIGHT_STYLES[globbing]:=fg=blue}
-: ${ZSH_HIGHLIGHT_STYLES[history-expansion]:=fg=blue}
+: ${ZSH_HIGHLIGHT_STYLES[path_approx]:=fg=yellow,bold,underline}
+: ${ZSH_HIGHLIGHT_STYLES[globbing]:=fg=cyan,bold}
+: ${ZSH_HIGHLIGHT_STYLES[history-expansion]:=fg=cyan,bold}
 : ${ZSH_HIGHLIGHT_STYLES[single-hyphen-option]:=none}
 : ${ZSH_HIGHLIGHT_STYLES[double-hyphen-option]:=none}
 : ${ZSH_HIGHLIGHT_STYLES[back-quoted-argument]:=none}
-: ${ZSH_HIGHLIGHT_STYLES[single-quoted-argument]:=fg=yellow}
-: ${ZSH_HIGHLIGHT_STYLES[double-quoted-argument]:=fg=yellow}
-: ${ZSH_HIGHLIGHT_STYLES[dollar-double-quoted-argument]:=fg=cyan}
-: ${ZSH_HIGHLIGHT_STYLES[back-double-quoted-argument]:=fg=cyan}
+: ${ZSH_HIGHLIGHT_STYLES[single-quoted-argument]:=fg=yellow,bold}
+: ${ZSH_HIGHLIGHT_STYLES[double-quoted-argument]:=fg=yellow,bold}
+: ${ZSH_HIGHLIGHT_STYLES[dollar-double-quoted-argument]:=fg=yellow,bold}
+: ${ZSH_HIGHLIGHT_STYLES[back-double-quoted-argument]:=fg=yellow,bold}
 : ${ZSH_HIGHLIGHT_STYLES[assign]:=none}
 
 # Whether the highlighter should be called or not.
@@ -603,4 +603,4 @@ add-zsh-hook preexec _zsh_highlight_preexec_hook 2>/dev/null || {
   }
 
 # Initialize the array of active highlighters if needed.
-[[ $#ZSH_HIGHLIGHT_HIGHLIGHTERS -eq 0 ]] && ZSH_HIGHLIGHT_HIGHLIGHTERS=(main) || true
+[[ $#ZSH_HIGHLIGHT_HIGHLIGHTERS -eq 0 ]] && ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor root line) || true
