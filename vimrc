@@ -83,7 +83,7 @@ noremap <C-p> <C-PageUp>
 noremap <C-t> <Esc>:tabedit<CR>
 noremap <C-b> <C-w>n 
 " Open a file
-noremap <C-o> <Esc>:e<Space><Tab>
+noremap <C-o> <Esc>:e<Space>
 " Close current window or tab
 noremap <C-q> <Esc>:q<CR>
 " Open a new tab with the current buffer's path
