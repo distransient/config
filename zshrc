@@ -29,12 +29,12 @@ precmd() {
   if [ -n "$(git branch 2> /dev/null)" ]; then
     if [ -n "$(git status --porcelain)" ] 
       then PROMPT="%{%(?:$FG[011]:$FG[009])$FX[bold]%} ? %f"
-      else PROMPT="%{%(?:$FG[013]:$FG[009])$FX[bold]%} = %f"
+      else PROMPT="%{%(?:$FG[011]:$FG[009])$FX[bold]%} = %f"
     fi
   elif [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
-    PROMPT="%{%(?:$FG[011]:$FG[009])$FX[bold]%} @ %f"
+    PROMPT="%{%(?:$FG[011]:$FG[009])$FX[bold]%} %(!:&:@) %f"
   else
-    PROMPT="%{%(?:$FG[011]:$FG[009])$FX[bold]%} # %f"
+    PROMPT="%{%(?:$FG[011]:$FG[009])$FX[bold]%} %(!:&:#) %f"
   fi
 }
 RPROMPT="%~" # Current directory right side prompt
