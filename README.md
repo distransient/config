@@ -2,6 +2,13 @@
 
 Kel's Dotfile repo; lean and mean!
 
+## Features
+
+- *Automatic updating:* Keeps confs updated with most recent commit on this repo
+- *Colored man pages*: Coordinated with my tmux, zsh prompt, and ls color schemes!
+- *Syntax highlighting*: Via [zsh-users/zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
+- *Hell of minimalism*: No big frameworks, plugin managers, just a bunch of clean, small confs with thorough documentation!
+
 # Installing
 
 ```
@@ -35,6 +42,8 @@ Icon Themes:
 - Fresh keybindings that make sense between tmux, zsh, vim
 - Bash fallback config/prompt
 - Don't use `precmd()` for zsh PROMPT, make PROMPT one string
+- Finish reading vim documentation so I can get the conf perfect!
+- Coordinate vim status bar/tab bar colors with tmux status bar
 
 # License
 
