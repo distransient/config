@@ -27,7 +27,7 @@ export BROWSER="google-chrome" # Default web browser
 export EDITOR="vim" # Default editor
 precmd() { 
   if [ -n "$(git branch 2> /dev/null)" ]; then
-    if [ -n "$(git status --porcelain)" ] 
+    if [ -n "$(git status --porcelain 2> /dev/null)" ] 
       then PROMPT="%{%(?:$FG[011]:$FG[009])$FX[bold]%} ? %f"
       else PROMPT="%{%(?:$FG[011]:$FG[009])$FX[bold]%} = %f"
     fi
