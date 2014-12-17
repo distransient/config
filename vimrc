@@ -50,6 +50,7 @@ set statusline="%<%f%8* %r%{&bomb?'!':''} %*%=%9*%m%* 0x%02B %l:%c%V %P/%LL"
 set title " Set window title to titlestring 
 
 " ¶ Behavior
+set autochdir " Automatically change working directory to current file's dir
 set magic " Make regexes portable/normalized
 set smartcase " Be case sensitive if uppercase chars are used in search
 set incsearch " Makes search act like search in modern browsers
