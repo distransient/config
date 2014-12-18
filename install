@@ -3,6 +3,7 @@
 
 cd `dirname $0` # Move to the directory of the dotfile repository
 
+touch $HOME/.profile && echo "source $(pwd)/profile" >> $HOME/.profile
 touch $HOME/.zshrc && echo "source $(pwd)/zshrc" >> $HOME/.zshrc
 touch $HOME/.vimrc && echo "source $(pwd)/vimrc" >> $HOME/.vimrc
 touch $HOME/.tmux.conf && echo "source-file $(pwd)/tmuxrc" >> $HOME/.tmux.conf
