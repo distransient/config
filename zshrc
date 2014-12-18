@@ -1,5 +1,7 @@
 # Kel's ZSH config!
 
+source $(dirname $0)/profile # Source env vars just in case
+source $(dirname $0)/aliases # Source aliases and functions
 for file in $(dirname $0)/lib/*.zsh; do source "$file"; done # Load libraries
 autoload -U compinit && compinit # Ultra basic tab completion
 bindkey -v # Vim bindings for shell input
@@ -13,6 +15,4 @@ setopt PROMPT_SUBST # Substitute commands, parameters, arithmetic in prompt
 PROMPT='%{%(?:$FG[011]:$FG[009])$FX[bold]%} $(if [ -n "$(git branch 2> /dev/null)" ]; then if [ -n "$(git status --porcelain 2> /dev/null)" ]; then echo "?"; else echo "="; fi; elif [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then echo "%(!:&:@)"; else echo "%(!:&:#)"; fi) %f' # DAMNN
 RPROMPT="%~" # Current directory right side prompt
  
-cd $(dirname $0) && git pull 1> /dev/null 
-cd $HOME
 [ -n "$TMUX" ] || tmux a || tmux

@@ -13,13 +13,13 @@ fi
 export PAGER="less" # Git diffs, man page viewer
 
 # ¶ Colorizing Env Vars
-export LESS_TERMCAP_mb="$FG[013]" # Colorize less blinking mode
-export LESS_TERMCAP_md="$FG[013]" # Colorize less bold mode 
-export LESS_TERMCAP_me="$FX[reset]" # Reset char for less so,us,mb,md,mr modes
-export LESS_TERMCAP_so="$BG[013]$FG[000]" # Colorize less standout mode
-export LESS_TERMCAP_se="$FX[reset]" # Reset char for less standout mode
-export LESS_TERMCAP_us="$FG[011]" # Colorize less underlining
-export LESS_TERMCAP_ue="$FX[reset]" # Reset char for less underlining
+export LESS_TERMCAP_mb="[38;5;013m" # Colorize less blinking mode
+export LESS_TERMCAP_md="[38;5;013m" # Colorize less bold mode 
+export LESS_TERMCAP_me="[00m" # Reset char for less so,us,mb,md,mr modes
+export LESS_TERMCAP_so="[48;5;013m[38;5;000m" # Colorize less standout mode
+export LESS_TERMCAP_se="[00m" # Reset char for less standout mode
+export LESS_TERMCAP_us="[38;5;011m" # Colorize less underlining
+export LESS_TERMCAP_ue="[00m" # Reset char for less underlining
 export LS_COLORS="di=96:fi=0:ln=1;91:pi=1;95:so=1;95:bd=1;95:cd=1;95:or=1;91:mi=1;91:ex=1;95"
 
 # ¶ Random

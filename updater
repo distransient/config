@@ -1,0 +1,4 @@
+if [ -n "$DONT_UPDATE" ]; then exit; fi
+
+cd $(dirname $0) && git pull 1> /dev/null 
+cd $HOME
