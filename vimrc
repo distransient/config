@@ -15,7 +15,7 @@ set viminfo^=% " Remember info about open buffers on close
 set nobackup " don't make permanent backups when overwriting files
 set nowb " don't make temporary backups before overwriting files 
 set noswapfile " don't make backup files for active vim buffers
-set history=1500 " Sets how many lines of history Vim has to remember
+set history=2000 " Sets how many lines of history Vim has to remember
 set mouse=a " Enable mouse for all modes
 filetype plugin on " Enable filetype plugin
 filetype indent on " Enable autoindent plugin
@@ -32,7 +32,7 @@ syntax enable " Enable syntax highlighting
 colorscheme default " Make the editor colorful
 set background=dark " Change this based on terminal emulator colorscheme
 set wrap " Visually wrap lines that are wider than the view
-set so=7 " Lines to the cursor when moving window vertically
+set scrolloff=7 " Lines to the cursor when moving window vertically
 set ruler " Always show current position
 set stal=2 " Always show tab page labels
 set number " Show line numbers
@@ -67,27 +67,22 @@ map <Up> gk
 
 " ¶ Shortcuts
 " Saving
-noremap <C-s> :w<CR>
-" Copy/cut/paste, respectively
-vnoremap <C-c> "+y "
-vnoremap <C-x> "+x
-noremap <C-v> "+gP
-" Moving around windows
-noremap <C-j> <C-W>j
-noremap <C-k> <C-W>k
-noremap <C-h> <C-W>h
-noremap <C-l> <C-W>l
+noremap <C-z> <Esc>:w<CR>
+" Close current buffer
+noremap <C-x> <Esc>:q<CR>
+" Open new tab
+noremap <C-c> <Esc>:tabnew<CR>
+" Split Vertically
+noremap <C-v> <C-w><C-v> 
+" Split Horizontally
+noremap <C-f> <C-w><C-s>
+" Open a file
+noremap <C-e> <Esc>:e<Space>
 " Moving around tabs
 noremap <C-n> <C-PageDown>
 noremap <C-p> <C-PageUp>
-" Opening new tabs and windows
-noremap <C-t> <Esc>:tabedit<CR>
-noremap <C-b> <C-w>n 
-" Open a file
-noremap <C-o> <Esc>:e<Space>
-" Close current window or tab
-noremap <C-q> <Esc>:q<CR>
-" Open a new tab with the current buffer's path
-noremap <C-e> <Esc>:tabedit <C-r>=expand("%:p:h")<CR>/
-" Switch CWD to the directory of the open buffer
-noremap <C-g> :cd %:p:h<cr>:pwd<cr>
+" Moving around windows
+noremap <C-j> <C-w>j
+noremap <C-k> <C-w>k
+noremap <C-h> <C-w>h
+noremap <C-l> <C-w>l
