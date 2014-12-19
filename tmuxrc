@@ -21,6 +21,12 @@ set -g prefix C-a # Screen style <C-a> binding
 setw -g mode-keys vi # Use vi keybindings in copy mode
 set -g status-keys vi # Use vi keybindings in status line command prompt
 bind C-a send-prefix # Send prefix to inner window
+bind v split-window -h # Split window vertically
+bind f split-window # Split window horizontally
+bind j select-pane -D # Focus pane down
+bind k select-pane -U # Focus pane up
+bind h select-pane -L # Focus pane left
+bind l select-pane -R # Focus pane right
 
 # ¶ Interface 
 set -g status-style bg=colour11,fg=black

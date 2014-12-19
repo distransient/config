@@ -66,6 +66,8 @@ map <Down> gj
 map <Up> gk
 
 " ¶ Shortcuts
+" Open a file
+noremap <C-e> <Esc>:e<Space>
 " Saving
 noremap <C-z> <Esc>:w<CR>
 " Close current buffer
@@ -76,8 +78,6 @@ noremap <C-c> <Esc>:tabnew<CR>
 noremap <C-v> <C-w><C-v> 
 " Split Horizontally
 noremap <C-f> <C-w><C-s>
-" Open a file
-noremap <C-e> <Esc>:e<Space>
 " Moving around tabs
 noremap <C-n> <C-PageDown>
 noremap <C-p> <C-PageUp>
