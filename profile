@@ -1,4 +1,11 @@
-# ¶ US English & UTF 8 Locale settings
+# E N V I R O N M E N T
+# → Locales
+# → Default Applications
+# → Colorizing Env Vars
+# → Et Cetera 
+# → ZSH specific
+
+# ¶ Locales → US English & UTF 8 
 export LC_ALL="en_US.UTF-8"
 export LANG="en_US.UTF-8"
 export LANGUAGE="en_US.UTF-8"
@@ -22,7 +29,7 @@ export LESS_TERMCAP_us="[38;5;011m" # Colorize less underlining
 export LESS_TERMCAP_ue="[00m" # Reset char for less underlining
 export LS_COLORS="di=96:fi=0:ln=1;91:pi=1;95:so=1;95:bd=1;95:cd=1;95:or=1;91:mi=1;91:ex=1;95"
 
-# ¶ Random
+# ¶ Et Cetera
 MAILCHECK=0 # Disable mail check notifications
 HISTFILE=~/.histfile && HISTSIZE=10000 && SAVEHIST=10000 # Shell history
 

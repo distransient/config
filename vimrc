@@ -55,7 +55,7 @@ set magic " Make regexes portable/normalized
 set smartcase " Be case sensitive if uppercase chars are used in search
 set incsearch " Makes search act like search in modern browsers
 set wildmenu " Nicer tab completion
-set wildignore=*.o,*~,*.pyc " Ignore compiled files in tab completion
+set wildignore=*.o,*~ " Ignore compiled files in tab completion
 set switchbuf=useopen,usetab,newtab " Switch to buf if active when opening
 set backspace=eol,start,indent " Normalize backspace behavior
 set whichwrap=b,s,<,>,[,] " Allow wrap on certain keys
