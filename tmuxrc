@@ -27,6 +27,10 @@ bind j select-pane -D # Focus pane down
 bind k select-pane -U # Focus pane up
 bind h select-pane -L # Focus pane left
 bind l select-pane -R # Focus pane right
+bind , resize-pane -L 5 # Resize pane left
+bind . resize-pane -R 5 # Resize pane right
+bind [ resize-pane -D 5 # Resize pane down
+bind ] resize-pane -U 5 # Resize pane up
 
 # ¶ Interface 
 set -g status-style bg=colour11,fg=black
