@@ -8,86 +8,86 @@
 " → Shortcuts
 
 " ¶ General
-set encoding=utf8 " Set the standard encoding
+set enc=utf8 " Set the standard encoding
 set ffs=unix,dos,mac " Use Unix <EOL>s
-set autoread " Set to auto read when a file is changed from the outside
-set viminfo^=% " Remember info about open buffers on close
-set nobackup " don't make permanent backups when overwriting files
+set ar " Set to auto read when a file is changed from the outside
+set vi^=% " Remember info about open buffers on close
+set nobk " don't make permanent backups when overwriting files
 set nowb " don't make temporary backups before overwriting files 
-set noswapfile " don't make backup files for active vim buffers
-set history=2000 " Sets how many lines of history Vim has to remember
-set mouse=a " Enable mouse for all modes
+set noswf " don't make backup files for active vim buffers
+set hi=100 " Sets how many lines of command history to remember
+set mouse=a " Enable mouse use for all modes
 filetype plugin on " Enable filetype plugin
 filetype indent on " Enable autoindent plugin
 
 " ¶ Indentation
-set expandtab " Use spaces as tabs
-set shiftwidth=2 " Number of spaces for autoindent
-set tabstop=2 " Number of spaces <Tab> accounts for
+set et " Use spaces in place of tabs
+set sw=2 " Number of spaces for autoindent
+set ts=2 " Number of spaces <Tab> accounts for
 set ai " Copy indent from current line when starting a new one
-set si " Increase indent level in some cases
+set si " Increase indent level based on language heuristics 
 
 " ¶ Interface
 syntax enable " Enable syntax highlighting
 colorscheme default " Make the editor colorful
-set background=dark " Change this based on terminal emulator colorscheme
-set wrap " Visually wrap lines that are wider than the view
-set scrolloff=7 " Lines to the cursor when moving window vertically
-set ruler " Always show current position
-set stal=2 " Always show tab page labels
-set number " Show line numbers
-set cmdheight=1 " Height of the command bar
-set hid " A buffer becomes hidden when it is abandoned
-set hlsearch " Highlight search results
-set lazyredraw " Don't redraw while executing macros
-set showmatch " Show matching brackets when cursor is over them
-set mat=2 " How many tenths of a second to blink when matching brackets
-set noerrorbells " No annoying sound on errors
-set novisualbell " No annoying flashing on errors
-set tm=500 " I have no idea what this does
-set laststatus=2 " Always show the status line
-set statusline="%<%f%8* %r%{&bomb?'!':''} %*%=%9*%m%* 0x%02B %l:%c%V %P/%LL"
-set title " Set window title to titlestring 
+set bg=dark " Colorscheme background; TODO: Remove 
+set so=7 " Lines to the cursor when moving window vertically
+set ru " Always show line and column number of cursor position
+set nu " Show line numbers
+set hid " Buffers become hidden when abandoned
+set hls " Highlight search results
+set lz " Don't redraw while executing macros
+set sm " Show matching brackets when cursor is over them
+set mat=2 " How many tenths of a second to blink matching brackets
+set noeb " Disable audial error bells
+set novb " Disable visual error bells 
+set tm=500 " Time in ms to wait for key sequence to complete
+set ls=2 " Always show the status line
+set stl="%<%f%8* %r%{&bomb?'!':''} %*%=%9*%m%* 0x%02B %l:%c%V %P/%LL"
+set title " Set graphical window title to titlestring 
+set titlestring="filename [+=-] (path)" " Window title information
 
 " ¶ Behavior
-set autochdir " Automatically change working directory to current file's dir
-set magic " Make regexes portable/normalized
-set smartcase " Be case sensitive if uppercase chars are used in search
-set incsearch " Makes search act like search in modern browsers
-set wildmenu " Nicer tab completion
-set wildignore=*.o,*~ " Ignore compiled files in tab completion
-set switchbuf=useopen,usetab,newtab " Switch to buf if active when opening
-set backspace=eol,start,indent " Normalize backspace behavior
-set whichwrap=b,s,<,>,[,] " Allow wrap on certain keys
+set bs=2 " Enable <Backspace> over all characters
+set ww=b,s,<,>,[,] " Allow wrap on <Backspace>, <Space>, <Left>, and <Right>
 " Treat wrapped lines like newlines
 map j gj
 map k gk
 map <Down> gj
 map <Up> gk
+set acd " Automatically change working directory to current file's dir
+set magic " Make regexes portable/normalized
+set scs " Search case sensitive if uppercase chars are used 
+set is " Highlight current search results 
+set wmnu " Enhanced command-line completion
+set swb=useopen,usetab,newtab " Buffer switching order
 
 " ¶ Shortcuts
 " Open a file
-noremap <C-e> <Esc>:e<Space>
+nnoremap <C-e> :e<Space>
+inoremap <C-e> <Esc>:e<Space>
 " Saving
-noremap <C-z> <Esc>:w<CR>
+nnoremap <C-z> :w<Cr>
+inoremap <C-z> <Esc>:w<Cr>
 " Close current buffer
-noremap <C-x> <Esc>:q<CR>
+nnoremap <C-x> :q<Cr>
 " Open new tab
-noremap <C-c> <Esc>:tabnew<CR>
+nnoremap <C-c> :tabnew<Cr>:e<Space>
+inoremap <C-c> <Esc>:tabnew<Cr>:e<Space>
 " Split Vertically
-noremap <C-v> <C-w><C-v> 
+nnoremap <C-v> <C-w><C-v> 
 " Split Horizontally
-noremap <C-f> <C-w><C-s>
+nnoremap <C-f> <C-w><C-s>
 " Moving around tabs
-noremap <C-n> <C-PageDown>
-noremap <C-p> <C-PageUp>
+nnoremap <C-n> <C-PageDown>
+nnoremap <C-m> <C-PageUp>
 " Moving around windows
-noremap <C-j> <C-w>j
-noremap <C-k> <C-w>k
-noremap <C-h> <C-w>h
-noremap <C-l> <C-w>l
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
 " Resizing windows
-noremap <C-,> <C-w><
-noremap <C-.> <C-w>>
-noremap <C-[> <C-w>-
-noremap <C-]> <C-w>+
+nnoremap <Silent> <C-p> :vert res -10<Cr>
+nnoremap <Silent> <C-u> :vert res +10<Cr>
+nnoremap <Silent> <C-i> :res -5<Cr>
+nnoremap <Silent> <C-o> :res +5<Cr>
