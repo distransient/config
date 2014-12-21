@@ -34,10 +34,7 @@ set so=7 " Lines to the cursor when moving window vertically
 set cul " Highlight screen line of the cursor
 set ru " Always show line and column number of cursor position
 set nu " Show line numbers
-set hid " Buffers become hidden when abandoned
 set hls " Highlight search results
-set lz " Don't redraw while executing macros
-set sm " Show matching brackets when cursor is over them
 
 " ¶ Behavior
 " Treat wrapped lines like newlines
