@@ -31,7 +31,6 @@ set si " Increase indent level based on language heuristics
 syntax enable " Enable syntax highlighting
 set bg=dark " Colorscheme background; TODO: Remove 
 set so=7 " Lines to the cursor when moving window vertically
-set cul " Highlight screen line of the cursor
 set ru " Always show line and column number of cursor position
 set nu " Show line numbers
 set hls " Highlight search results
