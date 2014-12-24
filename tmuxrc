@@ -37,6 +37,8 @@ bind o resize-pane -R 5 # Resize pane right
 unbind p # Remove previous-window binding
 bind p resize-pane -D 5 # Resize pane down
 bind u resize-pane -U 5 # Resize pane up
+unbind x # Remove confirm-before -p "kill-pane #P? (y/n)" kill-pane binding
+bind x kill-pane # I don't make mistakes :)
 
 # ¶ Interface 
 set -g status-style bg=colour11,fg=black
