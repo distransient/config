@@ -5,6 +5,7 @@
 
 # ¶ Functions
 start() { $@ > /dev/null 2>&1 &; disown $! } # Launch visual app outside shell 
+f() { find -ilname "*$**" } # Search for file with text foo in name
 s() { find -exec grep -n "$*" {} + 2> /dev/null } # Text search
 b() { cd $(git rev-parse --show-cdup) } # Cd to root of current repo
 ci() { git add -A && git commit -am "$*" } # commit all changes in repo
@@ -21,7 +22,6 @@ alias cp="cp -iv" # Prompt before overwrite, verbose copy
 alias mv="mv -iv" # Prompt before overwrite, verbose move
 alias rm="rm -iv" # Prompt before delete, verbose deletion 
 alias grep="grep --color=auto" # Colorify printed greps
-alias f="find -name" # Search for file with name foo
 
 # ¶ Application defaults
 alias xclip="xclip -select clipboard" # Select appropriate target for cp/paste 

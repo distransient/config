@@ -38,12 +38,12 @@ export HISTIGNORE="&:ls:ll:la:l.:pwd:exit:clear:clr:[bf]g"
 MAILCHECK="0" # Disable mail check notifications
 
 if [ -z SHOPT ]; then
-  shopt -s histappend        # Append history instead of overwriting
-  shopt -s cdspell           # Correct minor spelling errors in cd command
-  shopt -s dotglob           # includes dotfiles in pathname expansion
-  shopt -s checkwinsize      # If window size changes, redraw contents
-  shopt -s cmdhist           # Multiline commands are a single command in history.
-  shopt -s extglob           # Allows basic regexps in bash.
+  shopt -s histappend # Append history instead of overwriting
+  shopt -s cdspell # Correct minor spelling errors in cd command
+  shopt -s dotglob # includes dotfiles in pathname expansion
+  shopt -s checkwinsize # If window size changes, redraw contents
+  shopt -s cmdhist # Multiline commands are a single command in history.
+  shopt -s extglob # Allows basic regexps in bash.
 fi
 
 # ¶ ZSH specific

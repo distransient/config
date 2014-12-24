@@ -66,8 +66,8 @@ nnoremap <C-v> <C-w><C-v>
 " Split Horizontally
 nnoremap <C-b> <C-w><C-s>
 " Moving around tabs
-nnoremap <C-n> <C-PageDown>
-nnoremap <C-m> <C-PageUp>
+nnoremap <C-n> <C-PageUp>
+nnoremap <C-m> <C-PageDown>
 " Moving around windows
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
