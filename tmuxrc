@@ -21,16 +21,22 @@ set -g prefix C-a # Screen style <C-a> binding
 setw -g mode-keys vi # Use vi keybindings in copy mode
 set -g status-keys vi # Use vi keybindings in status line command prompt
 bind C-a send-prefix # Send prefix to inner window
+unbind n # Remove next-window binding
+bind n previous-window # Switch to other direction
+bind m next-window # Have these next to each other!
 bind v split-window -h # Split window vertically
-bind f split-window # Split window horizontally
+bind b split-window # Split window horizontally
 bind j select-pane -D # Focus pane down
 bind k select-pane -U # Focus pane up
 bind h select-pane -L # Focus pane left
 bind l select-pane -R # Focus pane right
-bind , resize-pane -L 5 # Resize pane left
-bind . resize-pane -R 5 # Resize pane right
-bind [ resize-pane -D 5 # Resize pane down
-bind ] resize-pane -U 5 # Resize pane up
+unbind i # Remove display-message binding
+bind i resize-pane -L 5 # Resize pane left
+unbind o # Remove select-pane -t :.+ binding
+bind o resize-pane -R 5 # Resize pane right
+unbind p # Remove previous-window binding
+bind p resize-pane -D 5 # Resize pane down
+bind u resize-pane -U 5 # Resize pane up
 
 # ¶ Interface 
 set -g status-style bg=colour11,fg=black
