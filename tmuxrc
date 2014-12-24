@@ -14,6 +14,9 @@ setw -g mode-mouse on # Mouse active in all modes
 set -g mouse-select-pane on # Allow mouse to change pane focus
 set -g mouse-resize-pane on # Allow mouse to drag-resize panes
 set -g mouse-select-window on # Change window by clicking on status pane
+set -g renumber-windows on # Renumber windows after closing, etc
+set -g base-index 1 # Start window numbers at 1 to match keyboard
+setw -g pane-base-index 1 # Do the same for panes
 
 # ¶ Keybindings 
 unbind C-b # Free normal tmux command bind
@@ -41,12 +44,12 @@ unbind x # Remove confirm-before -p "kill-pane #P? (y/n)" kill-pane binding
 bind x kill-pane # I don't make mistakes :)
 
 # ¶ Interface 
-set -g status-style bg=colour11,fg=black
+set -g status-style bg=colour11,fg=black # bg=bright yellow
 set -g status-left "" # Move window tabs all the way to the left
 set -g status-right "#H:#S " # Host : Session name
 set -g status-right-length 60 # Give plenty of space for big status-right
-set -g pane-border-style bg=colour11,fg=black
-set -g pane-active-border-style bg=colour13,fg=black
+set -g pane-border-style bg=colour11,fg=black # bg=bright yellow
+set -g pane-active-border-style bg=colour13,fg=black #bg=bright purrp
 setw -g monitor-activity on # Highlight windows with activity in status line
 setw -g window-status-bell-attr italics
 setw -g window-status-bell-bg colour9
@@ -54,6 +57,6 @@ setw -g window-status-content-attr italics
 setw -g window-status-content-bg white
 setw -g window-status-activity-attr italics
 setw -g window-status-activity-bg white
-setw -g window-status-current-bg colour13
+setw -g window-status-current-bg colour13 # bg=bright purrp
 setw -g window-status-format " #I #W " # Window number, window name
 setw -g window-status-current-format " #I #W " # Overwrite both defaults
