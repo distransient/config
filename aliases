@@ -7,7 +7,12 @@
 start() { $@ > /dev/null 2>&1 &; disown $! } # Launch visual app outside shell 
 f() { find -ilname "*$**" } # Search for file with text foo in name
 s() { find -exec grep -n "$*" {} + 2> /dev/null } # Text search
-b() { cd $(git rev-parse --show-cdup) } # Cd to root of current repo
+# Cd to root of current repo
+b() { 
+  [ -n "$(git branch 2> /dev/null)" ] && cd $(git rev-parse --show-cdup) || \
+  [ -n "$(hg root 2> /dev/null)" ] && cd $(hg root) || \
+  cd $HOME
+} 
 ci() { git add -A && git commit -am "$*" } # commit all changes in repo
 
 # ¶ Coreutil default options
