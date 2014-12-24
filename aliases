@@ -14,6 +14,27 @@ b() {
   cd $HOME
 } 
 ci() { git add -A && git commit -am "$*" } # commit all changes in repo
+# If in vcs repo, echo name of vcs system
+vcscurrent(){
+  [ -n "$(git branch 2> /dev/null)" ] && echo "git" || \
+  [ -n "$(hg root 2> /dev/null)" ] && echo "hg"
+}
+# If in vcs repo, echo name of current branch
+vcsbranch(){
+  [ -n "$(git branch 2> /dev/null)" ] && \
+    echo $(git symbolic-ref --short -q HEAD 2> /dev/null) || \
+  [ -n "$(hg root 2> /dev/null)" ] && \
+    echo $(hg branch 2> /dev/null)
+}
+# If in vcs repo and changes have been made, echo "dirty"
+vcsdirty(){
+  [ -n "$(git branch 2> /dev/null)" ] && \
+    [ -n "$(git status --porcelain 2> /dev/null)" ] && \
+      echo "dirty" || \
+  [ -n "$(hg root 2> /dev/null)" ] && \
+    [ -n "$(hg status 2> /dev/null)" ] && \
+      echo "dirty"
+}
 
 # ¶ Coreutil default options
 # Check if BSD or GNU
