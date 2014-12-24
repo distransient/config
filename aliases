@@ -35,6 +35,12 @@ vcsdirty(){
     [ -n "$(hg status 2> /dev/null)" ] && \
       echo "dirty"
 }
+# Used to get character for shell prompt
+promptchar(){
+  [ -n "$(vcscurrent)" ] && ([ -n "$(vcsdirty)" ] && echo "?" || echo "=" ) || \
+  [ $(id -u) -e 0 ] && echo "&" || \
+  ([ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ] && echo "@") || echo "#"
+}
 
 # ¶ Coreutil default options
 # Check if BSD or GNU

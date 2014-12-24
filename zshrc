@@ -11,16 +11,6 @@ setopt CORRECT # Prompt to correct possibly misspelled commands
 setopt NOBGNICE # Keep background processes at full speed
 setopt NO_BEEP # Never ever beep ever
 setopt PROMPT_SUBST # Substitute commands, parameters, arithmetic in prompt
-
-# if inside repo, prompt "?" when dirty and "=" when clean
-# else if root user, prompt "&"
-# else if in ssh session, prompt "@"
-# otherwise just prompt "#"
-promptchar(){
-  [ -n "$(vcscurrent)" ] && ([ -n "$(vcsdirty)" ] && echo "?" || echo "=" ) || \
-  [ $(id -u) -e 0 ] && echo "&" || \
-  ([ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ] && echo "@") || echo "#"
-}
 PROMPT='%{%(?:$FG[011]:$FG[009])$FX[bold]%} $(promptchar) %f' # ZSH's PS1
 RPROMPT='%~ %{$FG[011]%}$(vcsbranch)%f' # Right side prompt: pwd, vcs branch
  
