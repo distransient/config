@@ -38,7 +38,7 @@ vcsdirty(){
 # Used to get character for shell prompt
 promptchar(){
   [ -n "$(vcscurrent)" ] && ([ -n "$(vcsdirty)" ] && echo "?" || echo "=" ) || \
-  [ $(id -u) -e 0 ] && echo "&" || \
+  [ $(id -u) -eq 0 ] && echo "&" || \
   ([ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ] && echo "@") || echo "#"
 }
 
