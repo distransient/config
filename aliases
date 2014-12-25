@@ -4,7 +4,11 @@
 # → Application defaults
 
 # ¶ Functions
-edit() { select opt in "$@"; do case $opt in *) vim $opt && break; esac; done }
+edit() {
+  INPUT=(); while read data; do INPUT+=("$data"); done
+  select opt in "${INPUT[@]}"; do case $opt in *) vim $opt; break; esac; done
+}
+
 start() { $@ > /dev/null 2>&1 &; disown $! } # Launch visual app outside shell 
 f() { find -ilname "*$**" } # Search for file with text foo in name
 s() { find -exec grep -n "$*" {} + 2> /dev/null } # Text search
