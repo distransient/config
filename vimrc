@@ -1,7 +1,8 @@
 " “People get used to anything. The less you think about your oppression, the
-" more your tolerance for it grows. After a while, people just think
-" oppression is the normal state of things. But to become free, you have to be
-" acutely aware of being a slave.” - Assata Shakur
+"  more your tolerance for it grows. After a while, people just think
+"  oppression is the normal state of things. But to become free, you have to be
+"  acutely aware of being a slave.” - Assata Shakur
+"
 " Sections:
 " → General
 " → Indentation

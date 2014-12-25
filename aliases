@@ -1,4 +1,13 @@
-# Functions and defaults 
+# “There are countless ingredients that make up the human body and mind, like 
+#  all the components that make up me as an individual with my own personality. 
+#  Sure I have a face and voice to distinguish myself from others, but my 
+#  thoughts and memories are unique only to me, and I carry a sense of my own 
+#  destiny. Each of those things are just a small part of it. I collect 
+#  information to use in my own way. All of that blends to create a mixture that 
+#  forms me and gives rise to my conscience. I feel confined, only free to 
+#  expand myself within boundaries.” - Motoko Kusanagi
+#
+# Sections:
 # → Functions
 # → Coreutil default options
 # → Application defaults
@@ -6,7 +15,9 @@
 # ¶ Functions
 edit() {
   INPUT=(); while read data; do INPUT+=("$data"); done
-  select opt in "${INPUT[@]}"; do case $opt in *) vim $opt; break; esac; done
+  select opt in "${INPUT[@]}"; do case $opt in *) 
+    vim $(echo "$opt" | sed -r "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]//g"); 
+  break; esac; done < /dev/tty
 }
 
 start() { $@ > /dev/null 2>&1 &; disown $! } # Launch visual app outside shell 
