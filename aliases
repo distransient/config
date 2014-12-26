@@ -15,9 +15,8 @@
 # ¶ Functions
 edit() {
   INPUT=(); while read data; do INPUT+=("$data"); done
-  select opt in "${INPUT[@]}"; do case $opt in *) 
-    vim $(echo "$opt" | sed -r "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]//g"); 
-  break; esac; done < /dev/tty
+  select opt in "${INPUT[@]}"; do case $opt in 
+    *) vim $opt; break; esac; done < /dev/tty
 }
 
 start() { $@ > /dev/null 2>&1 &; disown $! } # Launch visual app outside shell 
