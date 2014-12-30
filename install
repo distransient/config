@@ -8,6 +8,9 @@ touch $HOME/.zshrc && echo "source $(pwd)/updater" >> $HOME/.zshrc \
   && echo "source $(pwd)/zshrc" >> $HOME/.zshrc
 touch $HOME/.vimrc && echo "source $(pwd)/vimrc" >> $HOME/.vimrc
 touch $HOME/.tmux.conf && echo "source-file $(pwd)/tmuxrc" >> $HOME/.tmux.conf
+mkdir -p $HOME/.config/awesome 
+ln -s awesomerc.lua $HOME/.config/awesome/rc.lua
+ln -s awesometheme.lua $HOME/.config/awesome/theme.lua
 
 echo ""
 echo "Configs are now sourced by [38;5;011m~/.profile[00m, [38;5;011m~/.zshrc[00m, [38;5;011m~/.vimrc[00m, and [38;5;011m~/.tmux.conf[00m"
