@@ -17,6 +17,7 @@ set ar " Set to auto read when a file is changed from the outside
 set nobk " don't make permanent backups when overwriting files
 set nowb " don't make temporary backups before overwriting files 
 set noswf " don't make backup files for active vim buffers
+set cb=autoselectplus " Use system clipboard for yanking and pasting
 set mouse=a " Enable mouse use for all modes
 filetype plugin on " Load filetype-specific plugins
 filetype indent on " Load filetype-specific indent patterns
