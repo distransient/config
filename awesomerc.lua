@@ -82,6 +82,8 @@ root.keys(awful.util.table.join(
   awful.key({ modkey }, "Return", function () awful.util.spawn(terminal) end),
   awful.key({ modkey, "Shift" }, "r", awesome.restart),
   awful.key({ modkey, "Shift" }, "q", awesome.quit),
+  awful.key({ modkey }, "Escape", function () 
+    awful.util.spawn("xscreensaver-command -lock") end),
   awful.key({ modkey }, "space", function () 
     awful.layout.inc(layouts, 1) end)
 ))
@@ -120,4 +122,5 @@ client.add_signal("focus", function(c)
 client.add_signal("unfocus", function(c) 
   c.border_color = beautiful.border_normal end)
 
+awful.util.spawn("xscreensaver -nosplash")
 awful.util.spawn(terminal)
