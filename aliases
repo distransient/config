@@ -19,7 +19,7 @@ edit() {
     *) vim $opt; break; esac; done < /dev/tty
 }
 
-start() { $@ > /dev/null 2>&1 &; disown %\$@ } # Launch visual app outside shell 
+start() { ($@ &) &> /dev/null } # Launch visual app outside shell 
 f() { find -ilname "*$**" } # Search for file with text foo in name
 s() { find -exec grep -n "$*" {} + 2> /dev/null } # Text search
 # Cd to root of current repo
@@ -69,6 +69,7 @@ alias cp="cp -iv" # Prompt before overwrite, verbose copy
 alias mv="mv -iv" # Prompt before overwrite, verbose move
 alias rm="rm -iv" # Prompt before delete, verbose deletion 
 alias grep="grep --color=auto" # Colorify printed greps
+alias scrot="scrot -q 100 -b" # Full quality screencap, grab wm border
 
 # ¶ Application defaults
 alias xclip="xclip -select clipboard" # Select appropriate target for cp/paste 

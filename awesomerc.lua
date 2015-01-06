@@ -85,7 +85,11 @@ root.keys(awful.util.table.join(
   awful.key({ modkey }, "Escape", function () 
     awful.util.spawn("xscreensaver-command -lock") end),
   awful.key({ modkey }, "space", function () 
-    awful.layout.inc(layouts, 1) end)
+    awful.layout.inc(layouts, 1) end),
+  awful.key({ modkey }, "s", function () 
+    awful.util.spawn("scrot -q 100 -e 'mv $f ~/screenshots/'") end)
+  awful.key({ modkey, "Shift" }, "s", function ()
+    awful.util.spawn("scrot -q 100 -e 'mv $f ~/screenshots/' -s") end)
 ))
 
 -- Window specific bindings and rules
