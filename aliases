@@ -76,4 +76,7 @@ alias xclip="xclip -select clipboard" # Select appropriate target for cp/paste
 alias tmux="tmux -2u" # Force 256 color/unicode tmux 
 alias vim="vim -p" # Allows multiple arguments to be opened as tabs
 alias v="vim -p" # Lazy shorthand
-[ -z $(which open) ] && alias open="xdg-open" # Linux version of BSD Open
+
+[ -n $(which xdg-open) ] && alias open="xdg-open" # Linux version of BSD Open
+alias s="start"
+alias w="start $BROWSER"
