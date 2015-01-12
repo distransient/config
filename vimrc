@@ -14,6 +14,7 @@
 set enc=utf8 " Set the standard encoding
 set ffs=unix,dos,mac " Use Unix <EOL>s
 set ar " Set to auto read when a file is changed from the outside
+set ml " Read for /* vim: */ modeline comments and set their options 
 set nobk " don't make permanent backups when overwriting files
 set nowb " don't make temporary backups before overwriting files 
 set noswf " don't make backup files for active vim buffers
