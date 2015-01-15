@@ -11,6 +11,8 @@ touch $HOME/.tmux.conf && echo "source-file $(pwd)/tmuxrc" >> $HOME/.tmux.conf
 mkdir -p $HOME/.config/awesome 
 ln -s awesomerc.lua $HOME/.config/awesome/rc.lua
 ln -s awesometheme.lua $HOME/.config/awesome/theme.lua
+mkdir -p $HOME/.config/xfce4/terminal
+ln -s xfce4terminalrc $HOME/.config/xfce4/termina/terminalrc
 
 echo ""
 echo "Configs are now sourced by [38;5;011m~/.profile[00m, [38;5;011m~/.zshrc[00m, [38;5;011m~/.vimrc[00m, and [38;5;011m~/.tmux.conf[00m"
