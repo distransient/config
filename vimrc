@@ -52,31 +52,29 @@ set is " Jump to currently matching terms in search pattern as it's typed
 set wmnu " Enhanced command-line completion
 
 " ¶ Shortcuts
+let mapleader=","
 " Open a file
-nnoremap <C-e> :e<Space>
-inoremap <C-e> <Esc>:e<Space>
+nnoremap <Leader>e :e<Space>
 " Saving
-nnoremap <C-z> :w<Cr>
-inoremap <C-z> <Esc>:w<Cr>
+nnoremap <Leader>z :w<Cr>
 " Close current buffer
-nnoremap <C-x> :q<Cr>
+nnoremap <Leader>x :q<Cr>
 " Open new tab
-nnoremap <C-c> :tabnew<Cr>:e<Space>
-inoremap <C-c> <Esc>:tabnew<Cr>:e<Space>
+nnoremap <Leader>c :tabnew<Cr>:e<Space>
 " Split Vertically
-nnoremap <C-v> <C-w><C-v> 
+nnoremap <Leader>v <C-w><C-v> 
 " Split Horizontally
-nnoremap <C-b> <C-w><C-s>
+nnoremap <Leader>b <C-w><C-s>
 " Moving around tabs
-nnoremap <C-n> <C-PageUp>
-nnoremap <C-m> <C-PageDown>
+nnoremap <Leader>n <C-PageUp>
+nnoremap <Leader>m <C-PageDown>
 " Moving around windows
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-h> <C-w>h
-nnoremap <C-l> <C-w>l
+nnoremap <Leader>j <C-w>j
+nnoremap <Leader>k <C-w>k
+nnoremap <Leader>h <C-w>h
+nnoremap <Leader>l <C-w>l
 " Resizing windows
-nnoremap <Silent> <C-p> :vert res -10<Cr>
-nnoremap <Silent> <C-u> :vert res +10<Cr>
-nnoremap <Silent> <C-i> :res -5<Cr>
-nnoremap <Silent> <C-o> :res +5<Cr>
+nnoremap <Silent> <Leader>p :vert res -10<Cr>
+nnoremap <Silent> <Leader>u :vert res +10<Cr>
+nnoremap <Silent> <Leader>i :res -5<Cr>
+nnoremap <Silent> <Leader>o :res +5<Cr>
