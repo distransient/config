@@ -10,7 +10,6 @@ setopt EXTENDED_GLOB # Allow advanced regexp globbing
 setopt NOBGNICE # Keep background processes at full speed
 setopt NO_BEEP # Never ever beep ever
 setopt PROMPT_SUBST # Substitute commands, parameters, arithmetic in prompt
-PROMPT='%{%(?:$FG[011]:$FG[009])$FX[bold]%} $(promptchar) %f' # ZSH's PS1
+PROMPT='%{%(?:$FG[011]:$FG[009])%} $(promptchar) %f' # ZSH's PS1
 RPROMPT='%~ %{$FG[011]%}$(vcsbranch)%f' # Right side prompt: pwd, vcs branch
  
-[ -n "$TMUX" ] || tmux a || tmux # Automatically attach to tmux
