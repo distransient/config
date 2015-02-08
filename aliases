@@ -13,11 +13,6 @@
 # → Application defaults
 
 # ¶ Functions
-edit() {
-  INPUT=(); while read data; do INPUT+=("$data"); done
-  select opt in "${INPUT[@]}"; do case $opt in 
-    *) vim $opt; break; esac; done < /dev/tty
-}
 colors() {
   T=" Nice! "
   echo -e "\n                 40m     41m     42m     43m \
@@ -32,34 +27,35 @@ colors() {
     done; echo
   done; echo
 }
+# TODO: make this not zsh specific
 start() { ($@ &) &> /dev/null } # Launch visual app outside shell 
 f() { find -ilname "*$**" } # Search for file with text foo in name
 s() { find -exec grep -n "$*" {} + 2> /dev/null } # Text search
 # Cd to root of current repo
 b() { 
-  [ -n "$(git branch 2> /dev/null)" ] && cd $(git rev-parse --show-cdup) || \
-  [ -n "$(hg root 2> /dev/null)" ] && cd $(hg root) || \
+  which git && [ -n "$(git branch 2> /dev/null)" ] && cd $(git rev-parse --show-cdup) || \
+  which hg && [ -n "$(hg root 2> /dev/null)" ] && cd $(hg root) || \
   cd $HOME
 } 
 ci() { git add -A && git commit -am "$*" } # commit all changes in repo
 # If in vcs repo, echo name of vcs system
 vcscurrent(){
-  [ -n "$(git branch 2> /dev/null)" ] && echo "git" || \
-  [ -n "$(hg root 2> /dev/null)" ] && echo "hg"
+  which git && [ -n "$(git branch 2> /dev/null)" ] && echo "git" || \
+  which hg && [ -n "$(hg root 2> /dev/null)" ] && echo "hg"
 }
 # If in vcs repo, echo name of current branch
 vcsbranch(){
-  [ -n "$(git branch 2> /dev/null)" ] && \
+  which git && [ -n "$(git branch 2> /dev/null)" ] && \
     echo $(git symbolic-ref --short -q HEAD 2> /dev/null) || \
-  [ -n "$(hg root 2> /dev/null)" ] && \
+  which hg && [ -n "$(hg root 2> /dev/null)" ] && \
     echo $(hg branch 2> /dev/null)
 }
 # If in vcs repo and changes have been made, echo "dirty"
 vcsdirty(){
-  [ -n "$(git branch 2> /dev/null)" ] && \
+  which git && [ -n "$(git branch 2> /dev/null)" ] && \
     [ -n "$(git status --porcelain 2> /dev/null)" ] && \
       echo "dirty" || \
-  [ -n "$(hg root 2> /dev/null)" ] && \
+  which hg && [ -n "$(hg root 2> /dev/null)" ] && \
     [ -n "$(hg status 2> /dev/null)" ] && \
       echo "dirty"
 }
@@ -77,13 +73,8 @@ alias ll="ls -Fhl" # ls list non-hidden
 alias cp="cp -iv" # Prompt before overwrite, verbose copy 
 alias mv="mv -iv" # Prompt before overwrite, verbose move
 alias rm="rm -iv" # Prompt before delete, verbose deletion 
-alias scrot="scrot -q 100 -b" # Full quality screencap, grab wm border
 
 # ¶ Application defaults
-alias xclip="xclip -select clipboard" # Select appropriate target for cp/paste 
 alias tmux="tmux -2u" # Force 256 color/unicode tmux 
 alias vim="vim -p" # Allows multiple arguments to be opened as tabs
-alias v="vim -p" # Lazy shorthand
-
-[ -n "$(which xdg-open)" ] && alias open="xdg-open" # Linux version of BSD Open
-alias w="start $BROWSER"
+alias web="start $BROWSER"
