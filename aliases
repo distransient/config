@@ -33,29 +33,29 @@ f() { find -ilname "*$**" } # Search for file with text foo in name
 s() { find -exec grep -n "$*" {} + 2> /dev/null } # Text search
 # Cd to root of current repo
 b() { 
-  which git && [ -n "$(git branch 2> /dev/null)" ] && cd $(git rev-parse --show-cdup) || \
-  which hg && [ -n "$(hg root 2> /dev/null)" ] && cd $(hg root) || \
+  [ -n "$(which git)" ] && [ -n "$(git branch 2> /dev/null)" ] && cd $(git rev-parse --show-cdup) || \
+  [ -n "$(which hg)" ] && [ -n "$(hg root 2> /dev/null)" ] && cd $(hg root) || \
   cd $HOME
 } 
 ci() { git add -A && git commit -am "$*" } # commit all changes in repo
 # If in vcs repo, echo name of vcs system
 vcscurrent(){
-  which git && [ -n "$(git branch 2> /dev/null)" ] && echo "git" || \
-  which hg && [ -n "$(hg root 2> /dev/null)" ] && echo "hg"
+  [ -n "$(which git)" ] && [ -n "$(git branch 2> /dev/null)" ] && echo "git" || \
+  [ -n "$(which hg)" ] && [ -n "$(hg root 2> /dev/null)" ] && echo "hg"
 }
 # If in vcs repo, echo name of current branch
 vcsbranch(){
-  which git && [ -n "$(git branch 2> /dev/null)" ] && \
-    echo $(git symbolic-ref --short -q HEAD 2> /dev/null) || \
-  which hg && [ -n "$(hg root 2> /dev/null)" ] && \
-    echo $(hg branch 2> /dev/null)
+  [ -n "$(which git)" ] && [ -n "$(git branch 2> /dev/null)" ] && \
+    echo " $(git symbolic-ref --short -q HEAD 2> /dev/null)" || \
+  [ -n "$(which hg)" ] && [ -n "$(hg root 2> /dev/null)" ] && \
+    echo " $(hg branch 2> /dev/null)"
 }
 # If in vcs repo and changes have been made, echo "dirty"
 vcsdirty(){
-  which git && [ -n "$(git branch 2> /dev/null)" ] && \
+  [ -n "$(which git)" ] && [ -n "$(git branch 2> /dev/null)" ] && \
     [ -n "$(git status --porcelain 2> /dev/null)" ] && \
       echo "dirty" || \
-  which hg && [ -n "$(hg root 2> /dev/null)" ] && \
+  [ -n "$(which hg)" ] && [ -n "$(hg root 2> /dev/null)" ] && \
     [ -n "$(hg status 2> /dev/null)" ] && \
       echo "dirty"
 }
