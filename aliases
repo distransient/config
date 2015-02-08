@@ -71,17 +71,12 @@ promptchar(){
 }
 
 # ¶ Coreutil default options
-# Check if BSD or GNU
-if ls --version 2>/dev/null | grep -q "coreutils"; then
-  _lscolor="--color=always"; else _lscolor="-G"; fi
-alias ls="ls -F $_lscolor" # ls with color
-alias l="ls -F $_lscolor" # Lazy shorthand
-alias la="ls -aFhl $_lscolor" # ls as list all
-alias ll="ls -Fhl $_lscolor" # ls list non-hidden
+alias ls="ls -F" 
+alias la="ls -aFhl" # ls as list all
+alias ll="ls -Fhl" # ls list non-hidden
 alias cp="cp -iv" # Prompt before overwrite, verbose copy 
 alias mv="mv -iv" # Prompt before overwrite, verbose move
 alias rm="rm -iv" # Prompt before delete, verbose deletion 
-alias grep="grep --color=auto" # Colorify printed greps
 alias scrot="scrot -q 100 -b" # Full quality screencap, grab wm border
 
 # ¶ Application defaults
