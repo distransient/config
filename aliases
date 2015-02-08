@@ -61,9 +61,12 @@ vcsdirty(){
 }
 # Used to get character for shell prompt
 promptchar(){
-  [ -n "$(vcscurrent)" ] && ([ -n "$(vcsdirty)" ] && echo "?" || echo "=" ) || \
-  ([ $(id -u) -eq 0 ] && echo "&") || \
-  ([ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ] && echo "@") || echo "#"
+  [ -n "$(vcscurrent)" ] && ([ -n "$(vcsdirty)" ] && echo " ? " || echo " = " ) || \
+  ([ $(id -u) -eq 0 ] && echo " & ") || \
+  ([ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ] && echo " @ ") || echo " # "
+}
+rightprompt(){
+  echo "$(pwd)$(vcsbranch)"
 }
 
 # ¶ Coreutil default options

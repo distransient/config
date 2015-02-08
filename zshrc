@@ -8,5 +8,5 @@ setopt EXTENDED_GLOB # Allow advanced regexp globbing
 setopt NOBGNICE # Keep background processes at full speed
 setopt NO_BEEP # Never ever beep ever
 setopt PROMPT_SUBST # Substitute commands, parameters, arithmetic in prompt
-PROMPT=' $(promptchar) ' # ZSH's PS1
-RPROMPT='%~$(vcsbranch)' # Right side prompt: pwd, vcs branch 
+PROMPT='$(promptchar)' # ZSH's PS1
+RPROMPT='$(rightprompt)' # Right side prompt: pwd, vcs branch 
