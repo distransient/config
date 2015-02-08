@@ -68,11 +68,11 @@ promptchar(){
 
 # ¶ Coreutil default options
 alias ls="ls -F" 
-alias la="ls -aFhl" # ls as list all
-alias ll="ls -Fhl" # ls list non-hidden
-alias cp="cp -iv" # Prompt before overwrite, verbose copy 
-alias mv="mv -iv" # Prompt before overwrite, verbose move
-alias rm="rm -iv" # Prompt before delete, verbose deletion 
+alias la="ls -aFhl" 
+alias ll="ls -Fhl" 
+alias cp="cp -i"  
+alias mv="mv -i" 
+alias rm="rm -i"  
 
 # ¶ Application defaults
 alias tmux="tmux -2u" # Force 256 color/unicode tmux 
