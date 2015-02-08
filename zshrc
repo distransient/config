@@ -1,6 +1,5 @@
 # Kel's ZSH config!
 
-source $(dirname $0)/profile # Source env vars just in case
 autoload -U compinit && compinit # Ultra basic tab completion
 bindkey -v # Vim bindings for shell input
 zstyle ':completion:*' list-colors "${(@s.:.)LS_COLORS}" # Tab completion color
