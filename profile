@@ -1,9 +1,6 @@
 # E N V I R O N M E N T
 # → Locales
 # → Default Applications
-# → Colorizing Env Vars
-# → Et Cetera 
-# → ZSH specific
 
 source $(dirname $0)/aliases # Source functions and default options
 
@@ -24,10 +21,4 @@ if [ -z SHOPT ]; then
   shopt -s checkwinsize # If window size changes, redraw contents
   shopt -s cmdhist # Multiline commands are a single command in history.
   shopt -s extglob # Allows basic regexps in bash.
-fi
-
-# ¶ ZSH specific
-if [ -n "$ZSH_NAME" ]; then
-  LISTMAX=0 # Automatically decide when to page a list of completions
-  REPORTTIME=5 # Print time statistics for processes that run longer than 5 secs
 fi
