@@ -11,6 +11,7 @@
 " → Shortcuts
 
 " ¶ General
+set nocp " default settings to not normal vi compatible 
 set enc=utf8 " Set the standard encoding
 set ffs=unix,dos,mac " Use Unix <EOL>s
 set ar " Set to auto read when a file is changed from the outside

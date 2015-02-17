@@ -43,8 +43,10 @@ bind u resize-pane -U 5 # Resize pane up
 
 # ¶ Interface 
 set -g status-left "" # Move window tabs all the way to the left
-set -g status-right "#H:#S " # Host : Session name
+set -g status-right "#(statusline tmux) " 
 set -g status-right-length 60 # Give plenty of space for big status-right
+set -g status-style fg=black,bg=white 
+set -g pane-active-border-style fg=white
 setw -g monitor-activity on # Highlight windows with activity in status line
 setw -g window-status-format " #I #W " # Window number, window name
 setw -g window-status-current-format " #I #W " # Overwrite both defaults
