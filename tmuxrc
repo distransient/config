@@ -3,11 +3,6 @@ set -g set-titles on # Enable window pane title via terminfo
 set -g set-titles-string "#W" # Window pane title string
 setw -g utf8 on # Expect unicode sequences in all windows
 set -g status-utf8 on # Treat top-bit-set characters in status string as utf-8
-set -g mouse-utf8 on # Request unicode mouse input on unicode terminals
-setw -g mode-mouse on # Mouse active in all modes
-set -g mouse-select-pane on # Allow mouse to change pane focus
-set -g mouse-resize-pane on # Allow mouse to drag-resize panes
-set -g mouse-select-window on # Change window by clicking on status pane
 set -g renumber-windows on # Renumber windows after closing, etc
 set -g base-index 1 # Start window numbers at 1 to match keyboard
 setw -g pane-base-index 1 # Do the same for panes
