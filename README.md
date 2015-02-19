@@ -1,21 +1,6 @@
-# Dot files. now more minimalist than ever before!
-
-Kel's Dotfile repo; lean and mean!
-
-# Installing
-
-```
-git clone https://github.com/mkgh/config && cd config && ./install
-```
+Dot files. now more minimalist than ever before!
 
 # Non-dotfile Preferences
-
-System Font (high ppi displays):
-- [Chivo](http://www.google.com/fonts/specimen/Chivo)
-- [Bitstream Vera](http://en.wikipedia.org/wiki/Bitstream_Vera)
-- [Open Sans](http://www.google.com/fonts/specimen/Open+Sans)
-- [Droid Sans](http://www.google.com/fonts/specimen/Droid+Sans)
-- [Archivo Black](http://www.google.com/fonts/specimen/Archivo+Black)
 
 Terminal Font:
 - For high ppi displays: [Anonymous Pro](http://www.marksimonson.com/fonts/view/anonymous-pro)
@@ -29,12 +14,6 @@ Icon Themes:
 - [Nitrux](http://gnome-look.org/content/show.php/Nitrux?content=154496)
 - [Faenza](http://gnome-look.org/content/show.php/Faenza?content=128143)
 
-# Todo
-
-- Make dotfiles update only on occaision similar to [this utility from oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh/blob/master/tools/check_for_upgrade.sh)
-- Bash fallback config/prompt
-- Coordinate vim status bar/tab bar colors with tmux status bar
-
 # License
 
-All files in this repo that don't say otherwise are placed in public domain; wherever I'm permitted to do so, I wave any copyright associated with these source files!.
+All files in this repo that don't say otherwise are placed in public domain; wherever I'm permitted to do so, I wave any copyright associated with these source files!
