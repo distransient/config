@@ -7,7 +7,7 @@ setopt EXTENDED_GLOB # Allow advanced regexp globbing
 setopt NOBGNICE # Keep background processes at full speed
 setopt NO_BEEP # Never ever beep ever
 setopt PROMPT_SUBST # Substitute commands, parameters, arithmetic in prompt
-PROMPT='$(promptchar)' # ZSH's PS1
-RPROMPT='$(rightprompt)' # Right side prompt: pwd, vcs branch 
+PROMPT='$(getlprompt)' # ZSH's PS1
+RPROMPT='$(getrprompt)' # Right side prompt: pwd, vcs branch 
 LISTMAX=0 # Automatically decide when to page a list of completions
 REPORTTIME=5 # Print time statistics for processes that run longer than 5 secs

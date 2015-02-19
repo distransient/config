@@ -1,9 +1,3 @@
-# Kel's TERMINAL !!MULTIPLEXER!! configuration
-# Sections
-# → General
-# → Keybindings
-# → Interface
-
 # ¶ General
 set -g set-titles on # Enable window pane title via terminfo
 set -g set-titles-string "#W" # Window pane title string
